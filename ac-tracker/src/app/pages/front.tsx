@@ -1,13 +1,22 @@
-import { useState } from "react"
-
+import React from "react";
 // This page will contain the first asking information. Only visible for first time users
-// export function is_local_Storage(){
 
-// }
+interface ModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
 
-const Front = () => {
+
+const FrontModal: React.FC<ModalProps> = ({isOpen, onClose}) => {
     // Ask the user their country so that we can accurately get the users time zone and hemisphere
-    const [country, setCountry] = useState("")
+    const [country, setCountry] = React.useState("")
+    
+    const handleSubmit = () => {
+        onClose();
+    };
+
+    if (!isOpen) return null;
+
     return (
         <div>
             <main>
@@ -18,9 +27,16 @@ const Front = () => {
                 </label>
 
                 <h2>Selected Country: {country}</h2>
+
+                <button
+                    className="submit bg-indigo-500 text-white px-4 py-2 rounded hover:bg-indigo-600"
+                     onClick={handleSubmit}
+                >
+                    Submit
+                </button>
             </main>
         </div>
     )
 }
 
-export default Front
+export default FrontModal
