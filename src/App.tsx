@@ -36,7 +36,6 @@ function App() {
           isOpen={isModalOpen}
           onClose={openCloseModal}
           />
-        
         <div>
           <DisplayIcons/>
         </div>
