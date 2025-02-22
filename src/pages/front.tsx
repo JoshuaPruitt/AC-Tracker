@@ -19,8 +19,8 @@ const FrontModal: React.FC<ModalProps> = ({isOpen, onClose}) => {
 
     return (
         <div>
-            <main>
-                <label>Select Your Countr
+            <div className="modal">
+                <label>Select Your Country
                     <select onChange={e => setCountry(e.target.value)}>
                         <option value={"USA"}>United States</option>
                     </select>
@@ -34,7 +34,7 @@ const FrontModal: React.FC<ModalProps> = ({isOpen, onClose}) => {
                 >
                     Submit
                 </button>
-            </main>
+            </div>
         </div>
     )
 }

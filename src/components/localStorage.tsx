@@ -10,11 +10,16 @@ export const is_local_storage = () : boolean => {
 
 // Get the local storage data
 export const get_data = () => {
-    const storage = localStorage.getItem("ac_data")
-    return storage
+    const storage: string | null = localStorage.getItem("ac_data")
+    if (storage){
+        console.log(storage)
+        return JSON.parse(storage)
+    } 
 }
 
 // Save data to local storage
 export const save_data = (data: string) => {
-    localStorage.setItem("ac_data", data)
+    if (data){        
+        localStorage.setItem("ac_data", JSON.stringify(data))
+    }  
 }
