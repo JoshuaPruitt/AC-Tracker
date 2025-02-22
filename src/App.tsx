@@ -1,10 +1,9 @@
-'use client'
-
 import { useState, useEffect } from "react";
 import { is_local_storage } from "./components/localStorage";
 import FrontModal from "./pages/front";
+import DisplayIcons from "./components/displayIcons";
 
-export default function Home() {
+function App() {
   const [isModalOpen, setModalOpen] = useState(false)
   
   const openCloseModal = () => {
@@ -37,7 +36,13 @@ export default function Home() {
           isOpen={isModalOpen}
           onClose={openCloseModal}
           />
+        
+        <div>
+          <DisplayIcons/>
+        </div>
       </main>
     </div>
   );
 }
+
+export default App
