@@ -16,7 +16,7 @@ function App() {
 
   // Open the modal on first time opening page
   const firstTime = () => {
-    if (is_local_storage() == false){
+    if (!is_local_storage()){
       openCloseModal()
     }
   };

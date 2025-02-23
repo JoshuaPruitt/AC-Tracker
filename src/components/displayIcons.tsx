@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState } from "react";
-import { get_data, save_data } from "./localStorage.js";
+import { get_data, save_data, remove_data } from "./localStorage.js";
 import { Acnh_data_interface } from "../interfaces/acnh-data-interface.js";
 import { acnh_data } from "../data/acnh-data.js";
 
@@ -68,19 +68,30 @@ export default function DisplayIcons() {
         );
     };
     
-
-    const selectItem = (index: number) => {
-        addSelectedItem(index)
-        removeItemTotal(index)
+    const selectItem = (item: Acnh_data_interface) => {
+        removeItemTotal(item) // remove item from the total
+        addSelectedItem(item) // add item to selected item
     }
 
-    const addSelectedItem = (index: number) => {
-        const item = total[index];
-        setSelectedItems((previousItems: any) => [...previousItems, item])
+    const addSelectedItem = (item: Acnh_data_interface) => {
+        setSelectedItems((prevSelected) => {
+            // Check if item already exists in selectedItems
+            if (!prevSelected.some((i) => i.name === item.name)) {
+                return [...prevSelected, item];
+            } else {
+                console.log("Duplicate", prevSelected)
+                return prevSelected; // Return unchanged if it's a duplicate
+            }
+            
+        });
+        // setSelectedItems((prevSelected) => [...prevSelected, item]);
+        // const item = total[index];
+        // setSelectedItems((previousItems: any) => [...previousItems, item])
     }
 
-    const removeItemTotal = (index: number) => {
-        setTotal((prevTotal) => prevTotal.filter((_, i) => i !== index));
+    const removeItemTotal = (item: Acnh_data_interface) => {
+        setTotal((prevTotal) => prevTotal.filter((i) => i.name !== item.name));
+        // setTotal((prevTotal) => prevTotal.filter((_, i) => i !== index));
     };
 
     const setItems = () => {
@@ -127,7 +138,7 @@ export default function DisplayIcons() {
                     {
                         bugs.map((item: any, index: number) => {
                             return (
-                                <button key={index} onClick={() => selectItem(index)}>
+                                <button key={index} onClick={() => selectItem(item)}>
                                     <img
                                         src={item.icon}
                                         alt={item.name}
@@ -146,7 +157,7 @@ export default function DisplayIcons() {
                     {
                         fish.map((item: any, index: number) => {
                             return (
-                                <button key={index} onClick={() => selectItem(index)}>
+                                <button key={index} onClick={() => selectItem(item)}>
                                     <img
                                         src={item.icon}
                                         alt={item.name}
@@ -165,7 +176,7 @@ export default function DisplayIcons() {
                     {
                         seaCreatures.map((item: any, index: number) => {
                             return (
-                                <button key={index} onClick={() => selectItem(index)}>
+                                <button key={index} onClick={() => selectItem(item)}>
                                     <img
                                         src={item.icon}
                                         alt={item.name}
@@ -185,7 +196,7 @@ export default function DisplayIcons() {
                     {
                         seaCreatures.map((item: any, index: number) => {
                             return (
-                                <button key={index} onClick={() => selectItem(index)}>
+                                <button key={index} onClick={() => selectItem(item)}>
                                     <img
                                         src={item.icon}
                                         alt={item.name}
@@ -205,7 +216,26 @@ export default function DisplayIcons() {
                     {
                         total.map((item: any, index: number) => {
                             return (
-                                <button key={index} onClick={() => selectItem(index)}>
+                                <button key={index} onClick={() => selectItem(item)}>
+                                    <img
+                                        src={item.icon}
+                                        alt={item.name}
+
+                                        width={30}
+                                        height={30}
+                                    />
+                                </button>
+                            )
+                        })
+                    }
+                </div>
+
+                <div>
+                    <h2>Selected</h2>
+                    {
+                        selectedItems.map((item: any, index: number) => {
+                            return (
+                                <button key={index}>
                                     <img
                                         src={item.icon}
                                         alt={item.name}
@@ -222,6 +252,7 @@ export default function DisplayIcons() {
                 <div>
                     <button onClick={() => saveItems()}>Save</button>
                     <button onClick={() => logSelectedItems()}>log</button>
+                    <button onClick={() => remove_data()}>Clear Data</button>
                 </div>
             </div>}
         </div>

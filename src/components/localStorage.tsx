@@ -3,10 +3,12 @@ import { Acnh_data_interface } from "../interfaces/acnh-data-interface"
 // Check if there is data in the local storage
 export const is_local_storage = () : boolean => {
     const storage = localStorage.getItem("ac_data")
-    if (storage) {
+    if (!storage) {
+        return false
+    } else {
         return true
     }
-    return false
+    
 }
 
 // Get the local storage data
@@ -23,4 +25,9 @@ export const save_data = (data: Acnh_data_interface[]) => {
     if (data){        
         localStorage.setItem("ac_data", JSON.stringify(data))
     }  
+}
+
+// remove anything in local storage
+export const remove_data = () => {
+    localStorage.clear()
 }
