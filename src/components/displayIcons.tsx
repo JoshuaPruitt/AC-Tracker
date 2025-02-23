@@ -74,10 +74,29 @@ export default function DisplayIcons() {
             )
         );
     };
-    
-    const selectItem = (item: Acnh_data_interface) => {
-        removeItemTotal(item) // remove item from the total
-        addSelectedItem(item) // add item to selected item
+
+    const addTotalItem = (item: Acnh_data_interface) => {
+        setTotal((prevSelected) => {
+            // Check if item already exists in selectedItems
+            if (!prevSelected.some((i) => i.name === item.name)) {
+                return [...prevSelected, item];
+            } else {
+                console.log("Duplicate", prevSelected)
+                return prevSelected; // Return unchanged if it's a duplicate
+            }
+            
+        });
+    }
+
+    const removeItemSelected = (item: Acnh_data_interface) => {
+        setSelectedItems((prevTotal) => prevTotal.filter((i) => i.name !== item.name));
+    }
+
+    const selectAlreadySelected = (item: Acnh_data_interface) => {
+        removeItemSelected(item) // remove item from selected
+        addTotalItem(item) // add item to total
+
+        setItems() // refresh categories
     }
 
     const addSelectedItem = (item: Acnh_data_interface) => {
@@ -100,6 +119,11 @@ export default function DisplayIcons() {
         setTotal((prevTotal) => prevTotal.filter((i) => i.name !== item.name));
         // setTotal((prevTotal) => prevTotal.filter((_, i) => i !== index));
     };
+
+    const selectItem = (item: Acnh_data_interface) => {
+        removeItemTotal(item) // remove item from the total
+        addSelectedItem(item) // add item to selected item
+    }
 
     const setItems = () => {
         setBugs(total.filter((item) => item.type === 1));
@@ -242,7 +266,7 @@ export default function DisplayIcons() {
                     {
                         selectedItems.map((item: any, index: number) => {
                             return (
-                                <button key={index}>
+                                <button key={index} onClick={() => selectAlreadySelected(item)}>
                                     <img
                                         src={item.icon}
                                         alt={item.name}
