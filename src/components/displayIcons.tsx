@@ -25,8 +25,15 @@ export default function DisplayIcons() {
         const data = get_data();
         if (!data) return;
 
-        setSelectedItems((prevItems: any) => [...prevItems, ...data])
-    
+        // Remove duplicates from incoming data before adding to selectedItems
+        setSelectedItems((prevItems) => {
+            const uniqueItems = [...prevItems, ...data].filter(
+                (item, index, self) =>
+                    index === self.findIndex((i) => i.name === item.name) // Ensure uniqueness
+            );
+            return uniqueItems;
+        });
+        
         // Add new unique items to total
         setTotal((prevTotal: any) => {
             const newItems = data.filter(
