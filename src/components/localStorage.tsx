@@ -1,3 +1,4 @@
+import { Acnh_data_interface } from "../interfaces/acnh-data-interface"
 
 // Check if there is data in the local storage
 export const is_local_storage = () : boolean => {
@@ -18,7 +19,7 @@ export const get_data = () => {
 }
 
 // Save data to local storage
-export const save_data = (data: string) => {
+export const save_data = (data: Acnh_data_interface[]) => {
     if (data){        
         localStorage.setItem("ac_data", JSON.stringify(data))
     }  
