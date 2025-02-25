@@ -5,6 +5,7 @@ import Time from "../interfaces/time-interface";
 const GetTimeData = () => {
     const [currentTime, setCurrentTime] = useState<Time| null>();
     const [ip, setIpAddress] = useState<string | null>();
+    // const [timerActive, setTimerActive] = useState<boolean>(false);
 
     const getIpData = async () => {
         const res = await axios.get('https://api.ipify.org/?format=json');
@@ -15,7 +16,26 @@ const GetTimeData = () => {
     };
 
     // const timer = () => {
-    //     setInterval(fetchData, 1000)
+    //     setInterval(() => {
+    //         addToTime()
+    //         setTimerActive(false)
+    //     } , 1000)
+    // }
+
+    // const addToTime = () => {
+    //     if(currentTime){
+
+    //         if(currentTime.seconds == 60){
+    //             setCurrentTime({...currentTime, minute: currentTime.minute++, seconds: 0})
+    //             console.log("New Minute")
+    //         } else {
+    //             setCurrentTime({...currentTime, seconds: currentTime.seconds++})
+    //         }
+
+    //         timer()
+    //     } else {
+    //         console.log("No Current Time!")
+    //     }
     // }
 
     const fetchData = async (retIp?: string | null) => {
@@ -34,24 +54,35 @@ const GetTimeData = () => {
         }
     }
 
-    useEffect( () => {
+    // useEffect(() => {
+    //     if(!timerActive){
+    //         timer()
+    //         setTimerActive(true)
+    //     }
+
+    // }, [currentTime])
+
+    useEffect(() => {
         const checkIfIp = async () => {
             if(!ip){ //if no ip address then grap ip
                 const ip = await getIpData();
-                fetchData(ip)
+                await fetchData(ip)
             }
         }
 
         checkIfIp()
-    })
+    }, [])
 
     return (
         <div>
-            <div>
-                <h3>{ip}</h3>
-                <h4>{`Time: ${currentTime?.minute}:${currentTime?.seconds}:${currentTime?.milliSeconds}`}</h4>
-            </div>
-            
+            {ip && currentTime ? 
+                <div>
+                    <h3>{ip}</h3>
+                    <h4>{`Time: ${currentTime?.minute}:${currentTime?.seconds}:${currentTime?.milliSeconds}`}</h4>
+                </div> 
+                : 
+                ""
+            }
         </div>
     )
 }
