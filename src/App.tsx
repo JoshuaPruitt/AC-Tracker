@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { is_local_storage } from "./components/localStorage";
 import FrontModal from "./pages/front";
-import DisplayIcons from "./api/displayIcons";
-import GetTimeData from "./components/fetchTimeData";
+import DisplayIcons from "./components/displayIcons";
+import GetTimeData from "./api/fetchTimeData";
 
 function App() {
   const [isModalOpen, setModalOpen] = useState(false)
