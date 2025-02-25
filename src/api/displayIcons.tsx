@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState } from "react";
-import { get_data, save_data, remove_data } from "./localStorage.js";
+import { get_data, save_data, remove_data } from "../components/localStorage.js";
 import { Acnh_data_interface } from "../interfaces/acnh-data-interface.js";
 import { acnh_data } from "../data/acnh-data.js";
 
