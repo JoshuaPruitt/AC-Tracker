@@ -184,7 +184,7 @@ export default function DisplayIcons() {
     //     }
     // }
 
-    // Memoize setItems to prevent unnecessary re-creation
+    // Sets all items within the respective categories
     const setItems = useCallback(() => {
         setBugs(total.filter((item) => item.type === 1));
         setFish(total.filter((item) => item.type === 2));
@@ -223,7 +223,7 @@ export default function DisplayIcons() {
         
     }, [total, selectedItems, setItems]);
 
-    // remove any duplicates once the component has finished loading
+    // remove total duplicates once the component has finished loading
     useEffect(() => {
         pullStorage()
         removeTotalDup()

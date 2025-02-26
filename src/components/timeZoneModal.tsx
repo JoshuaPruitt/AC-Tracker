@@ -7,7 +7,7 @@ interface ModalProps {
 }
 
 
-const FrontModal: React.FC<ModalProps> = ({isOpen, onClose}) => {
+const TimeZoneModal: React.FC<ModalProps> = ({isOpen, onClose}) => {
     // Ask the user their country so that we can accurately get the users time zone and hemisphere
     const [country, setCountry] = React.useState("")
     
@@ -39,4 +39,4 @@ const FrontModal: React.FC<ModalProps> = ({isOpen, onClose}) => {
     )
 }
 
-export default FrontModal
+export default TimeZoneModal
