@@ -1,10 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useEffect, useState } from "react";
+import { useMemo, useCallback, useEffect, useState } from "react";
 import { get_data, save_data, remove_data } from "./localStorage.js";
 import { Acnh_data_interface } from "../interfaces/acnh-data-interface.js";
 import { acnh_data } from "../data/acnh-data.js";
 
-// import GetTimeData from "../components/fetchTimeData.js";
+import { getTimeDataIp } from '../api/timeData.js';
+import Time from "../interfaces/time-interface.js";
 
 
 export default function DisplayIcons() {
@@ -14,10 +15,19 @@ export default function DisplayIcons() {
     const [total, setTotal] = useState<Acnh_data_interface[]>([]); // all items
     const [selectedItems, setSelectedItems] = useState<Acnh_data_interface[]>([]); // all selected items
 
+    const [timedItems, setTimedItems] = useState<Acnh_data_interface[]>([]); // contains all items that are currently available at the time of day
+
     const [bugs, setBugs] = useState<any>([]); // bugs
     const [fish, setFish] = useState<any>([]); // fish
     const [seaCreatures, setSeaCreatures] = useState<any>([]); // sea creatures
     const [uncatagorized, setUncategorized] = useState<any>([]); // uncategorized
+
+
+    const [currentTime, setCurrentTime] = useState<Time| null | void>(); // Current time
+
+    const stopLoading = () => {
+        setLoading(false);
+    }
 
     const logSelectedItems = () => {
         console.log("selected Items:", selectedItems)
@@ -60,22 +70,58 @@ export default function DisplayIcons() {
         save_data(selectedItems)
     };
 
-    const addData = () => {
-        for (const item in filePaths){
-            // if item does not already exist in total then add to total
-            if (!total.find((i: any) => i.name === total[item].name)){
-                setTotal((previousItems: any) => [...previousItems, filePaths[item]])
-            }
-        }
-    };
+    // const addData = () => {
+    //     for (const item in filePaths){
+    //         // if item does not already exist in total then add to total
+    //         if (!total.find((i: any) => i.name === total[item].name)){
+    //             setTotal((previousItems: any) => [...previousItems, filePaths[item]])
+    //         }
+    //     }
+    // };
 
-    const removeDup = () => {
+    // Memoize addData to prevent unnecessary re-creation
+    const addData = useCallback(() => {
+        setTotal((prevTotal) => [
+            ...prevTotal,
+            ...filePaths.filter(
+                (item) => !prevTotal.some((i) => i.name === item.name)
+            ),
+        ]);
+    }, [filePaths]); // Only updates when filePaths changes
+
+    const removeTotalDup = () => {
         setTotal((prevTotal) =>
             prevTotal.filter((item, index, self) =>
                 index === self.findIndex((i) => i.name === item.name)
             )
         );
     };
+ 
+    // const removeTimedDup = () => {
+    //     setTimedItems((prevTimed) => 
+    //         prevTimed.filter((item, index, self) => 
+    //             index === self.findIndex((i) => i.name === item.name)
+    //         )
+    //     );
+    // };
+
+    // const removeTimedDup = () => {
+    //     setTimedItems((prevTimed) => {
+    //         const uniqueItems = prevTimed.filter(
+    //             (item, index, self) =>
+    //                 index === self.findIndex((i) => i.name === item.name) // Remove duplicates
+    //         );
+    
+    //         return uniqueItems;
+    //     });
+    // };
+
+    const uniqueTimedItems = useMemo(() => {
+        return total.filter(
+            (item, index, self) =>
+                index === self.findIndex((i) => i.name === item.name) // Ensure uniqueness
+        ).filter(item => currentTime && item.time_of_day >= currentTime.hour);
+    }, [total, currentTime]);
 
     const addTotalItem = (item: Acnh_data_interface) => {
         setTotal((prevSelected) => {
@@ -127,45 +173,101 @@ export default function DisplayIcons() {
         addSelectedItem(item) // add item to selected item
     }
 
-    const setItems = () => {
+    // const setItems = () => {
+    //     setBugs(total.filter((item) => item.type === 1));
+    //     setFish(total.filter((item) => item.type === 2));
+    //     setSeaCreatures(total.filter((item) => item.type === 3));
+    //     setUncategorized(total.filter((item) => item.type === 0));
+
+    //     if(currentTime){
+    //         setTimedItems(total.filter((item) => item.time_of_day >= currentTime!.hour));
+    //     }
+    // }
+
+    // Memoize setItems to prevent unnecessary re-creation
+    const setItems = useCallback(() => {
         setBugs(total.filter((item) => item.type === 1));
         setFish(total.filter((item) => item.type === 2));
         setSeaCreatures(total.filter((item) => item.type === 3));
         setUncategorized(total.filter((item) => item.type === 0));
-    }
+
+        if (currentTime) {
+            setTimedItems(total.filter((item) => item.time_of_day >= currentTime.hour));
+        }
+    }, [total, currentTime]); // Only recreates if total or currentTime changes
+
+    // set loading to true on start and once data is in then set loading to false
+    useEffect(() => {
+        setLoading(true);
+        try {
+            const dataFunc = async () => {
+                const timeData = await getTimeDataIp() // grab time data
+                setCurrentTime(timeData) // set time data
+
+                addData() // grab total data
+            }
+
+            dataFunc()
+            
+        } catch (err: any) {
+            console.error("Error displaying elements!", err)
+        }
+    }, [addData]);
 
     useEffect(() => {
         console.log("total:", total)
         console.log("selected Items:", selectedItems)
 
         setItems() // set the items
-    }, [total]);
+        stopLoading() // stop loading state
+        
+    }, [total, selectedItems, setItems]);
 
     // remove any duplicates once the component has finished loading
     useEffect(() => {
         pullStorage()
-        removeDup()
-
-        // filter any null values
-        // setSelectedItems(selectedItems.filter((item: any) => item))
+        removeTotalDup()
     
     }, [loading]);
 
-    // set loading to true on start and once data is in then set loading to false
+    // Ensures timedItems contains no duplicate entries
     useEffect(() => {
-        setLoading(true);
-        try {
-            addData()
-            setLoading(false)
-        } catch (err: any) {
-            console.error("Error displaying elements!", err)
-        }
-    }, []);
+        setTimedItems(uniqueTimedItems)
+    }, [uniqueTimedItems]);
 
     return (
         <div>
             {loading ? <h2>Loading...</h2> : 
             <div>
+                <div>
+                    {currentTime ? 
+                        <div>
+                            <h4>{`Time: ${currentTime?.hour}:${currentTime?.minute}:${currentTime?.seconds}`}</h4>
+                        </div> 
+                        : 
+                        ""
+                    }
+                </div>
+
+                <div>
+                    <h2>Items available at this time</h2>
+                    {
+                        timedItems.map((item: any, index: number) => {
+                            return (
+                                <button key={index} onClick={() => selectItem(item)}>
+                                    <img
+                                        src={item.icon}
+                                        alt={item.name}
+
+                                        width={30}
+                                        height={30}
+                                    />
+                                </button>
+                            )
+                        })
+                    }
+                </div>
+
                 <div>
                     <h2>Bugs</h2>
                     {

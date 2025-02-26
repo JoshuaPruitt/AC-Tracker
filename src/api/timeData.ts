@@ -29,4 +29,4 @@ const getTimeDataIp = async (): Promise<void | Time> => {
     }
 }
 
-export default {grapIp, fetchData, getTimeDataIp};
+export {grapIp, fetchData, getTimeDataIp};

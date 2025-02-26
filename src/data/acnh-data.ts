@@ -208,7 +208,7 @@ export const acnh_data = [
         icon : AgriasbutterflyIcon,
         description : "",
         month : 1,
-        time_of_day : 1
+        time_of_day : 20
     },
 
     {
