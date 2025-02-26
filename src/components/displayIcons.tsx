@@ -70,15 +70,6 @@ export default function DisplayIcons() {
         save_data(selectedItems)
     };
 
-    // const addData = () => {
-    //     for (const item in filePaths){
-    //         // if item does not already exist in total then add to total
-    //         if (!total.find((i: any) => i.name === total[item].name)){
-    //             setTotal((previousItems: any) => [...previousItems, filePaths[item]])
-    //         }
-    //     }
-    // };
-
     // Memoize addData to prevent unnecessary re-creation
     const addData = useCallback(() => {
         setTotal((prevTotal) => [
@@ -97,25 +88,6 @@ export default function DisplayIcons() {
         );
     };
  
-    // const removeTimedDup = () => {
-    //     setTimedItems((prevTimed) => 
-    //         prevTimed.filter((item, index, self) => 
-    //             index === self.findIndex((i) => i.name === item.name)
-    //         )
-    //     );
-    // };
-
-    // const removeTimedDup = () => {
-    //     setTimedItems((prevTimed) => {
-    //         const uniqueItems = prevTimed.filter(
-    //             (item, index, self) =>
-    //                 index === self.findIndex((i) => i.name === item.name) // Remove duplicates
-    //         );
-    
-    //         return uniqueItems;
-    //     });
-    // };
-
     const uniqueTimedItems = useMemo(() => {
         return total.filter(
             (item, index, self) =>
@@ -158,31 +130,16 @@ export default function DisplayIcons() {
             }
             
         });
-        // setSelectedItems((prevSelected) => [...prevSelected, item]);
-        // const item = total[index];
-        // setSelectedItems((previousItems: any) => [...previousItems, item])
     }
 
     const removeItemTotal = (item: Acnh_data_interface) => {
         setTotal((prevTotal) => prevTotal.filter((i) => i.name !== item.name));
-        // setTotal((prevTotal) => prevTotal.filter((_, i) => i !== index));
     };
 
     const selectItem = (item: Acnh_data_interface) => {
         removeItemTotal(item) // remove item from the total
         addSelectedItem(item) // add item to selected item
     }
-
-    // const setItems = () => {
-    //     setBugs(total.filter((item) => item.type === 1));
-    //     setFish(total.filter((item) => item.type === 2));
-    //     setSeaCreatures(total.filter((item) => item.type === 3));
-    //     setUncategorized(total.filter((item) => item.type === 0));
-
-    //     if(currentTime){
-    //         setTimedItems(total.filter((item) => item.time_of_day >= currentTime!.hour));
-    //     }
-    // }
 
     // Sets all items within the respective categories
     const setItems = useCallback(() => {
