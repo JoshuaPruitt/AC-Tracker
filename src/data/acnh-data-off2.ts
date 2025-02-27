@@ -1,4 +1,3 @@
-import { Acnh_data_interface } from "../interfaces/acnh-data-interface";
 
 import WhelkIcon from "../../assets/ac-icons/sea-critters/Whelk_NH_Icon.png";
 import Venusflower_basketIcon from "../../assets/ac-icons/sea-critters/Venus'_Flower_Basket_NH_Icon.png";
@@ -201,7 +200,7 @@ import AtlasmothIcon from "../../assets/ac-icons/bugs/Atlas_Moth_NH_Icon.png";
 import AntIcon from "../../assets/ac-icons/bugs/Ant_NH_Icon.png";
 import AgriasbutterflyIcon from "../../assets/ac-icons/bugs/Agrias_Butterfly_NH_Icon.png";
 
-export const acnh_data: Acnh_data_interface[] = [
+export const acnh_data = [
 
     {
         //Type: 0 = uncategorized, 1 = bugs, 2 = fish, 3 = seaCreatures
@@ -211,10 +210,7 @@ export const acnh_data: Acnh_data_interface[] = [
         //Weather: 0 = any, 1 = any except rain, 2 = only rain
         weather: 1,
         //Month: 1 for each month. 0 means it does not appear on that month. 1 means it does
-        month : {
-            north: [0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0],
         //Time of Day: first number is when it starts appearing at that time, seccond number is for when it stops appearing
         time_of_day : [8, 17], 
         //Total Catches: How many catches a user needs to have before you can have this creature appear
@@ -228,10 +224,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Ant",
         icon : AntIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 0,
 
@@ -243,10 +236,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Atlas moth",
         icon : AtlasmothIcon,
         weather: 0,
-        month : {
-            north: [0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0],
-            south: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        },
+        month : [0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0],
         time_of_day : [19, 4], 
         totalCatches: 20,
 
@@ -258,12 +248,9 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Bagworm",
         icon : BagwormIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
-        totalCatches: 0,
+        totalCatches: 20,
 
         bugLocation: 0,
     },
@@ -273,10 +260,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Banded dragonfly",
         icon : BandeddragonflyIcon,
         weather: 1,
-        month : {
-            north: [0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0],
         time_of_day : [8, 17], 
         totalCatches: 50,
 
@@ -288,10 +272,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Bell cricket",
         icon : BellcricketIcon,
         weather: 1,
-        month : {
-            north: [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0],
         time_of_day : [17, 8], 
         totalCatches: 20,
 
@@ -303,10 +284,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Blue weevil_beetle",
         icon : Blueweevil_beetleIcon,
         weather: 0,
-        month : {
-            north: [0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0],
         time_of_day : [0, 24], 
         totalCatches: 0,
 
@@ -318,10 +296,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Brown cicada",
         icon : BrowncicadaIcon,
         weather: 0,
-        month : {
-            north: [0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0],
         time_of_day : [8, 17], 
         totalCatches: 0,
 
@@ -333,10 +308,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Centipede",
         icon : CentipedeIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1],
         time_of_day : [16, 23], 
         totalCatches: 0,
 
@@ -348,10 +320,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Cicada shell",
         icon : CicadashellIcon,
         weather: 0,
-        month : {
-            north: [0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0],
         time_of_day : [0, 24], 
         totalCatches: 50,
 
@@ -362,11 +331,8 @@ export const acnh_data: Acnh_data_interface[] = [
         type : 1,
         name : "Citrus long-horned_beetle",
         icon : Citruslonghorned_beetleIcon,
-        weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        },
+        weather: 1,
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 0,
 
@@ -378,27 +344,19 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Common bluebottle",
         icon : CommonbluebottleIcon,
         weather: 0,
-        month : {
-            north: [0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0],
         time_of_day : [4, 19], 
         totalCatches: 0,
 
         bugLocation: 0,
     },
 
-    //end
-
     {
         type : 1,
         name : "Common butterfly",
         icon : CommonbutterflyIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -410,10 +368,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Cricket",
         icon : CricketIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -425,10 +380,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Cyclommatus stag",
         icon : CyclommatusstagIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -440,10 +392,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Damselfly",
         icon : DamselflyIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -455,10 +404,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Darner dragonfly",
         icon : DarnerdragonflyIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -470,10 +416,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Diving beetle",
         icon : DivingbeetleIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -485,10 +428,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Drone beetle",
         icon : DronebeetleIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -500,10 +440,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Dung beetle",
         icon : DungbeetleIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -515,10 +452,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Earth-boring dung_beetle",
         icon : Earthboringdung_beetleIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -530,10 +464,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Emperor butterfly",
         icon : EmperorbutterflyIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -545,10 +476,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Evening cicada",
         icon : EveningcicadaIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -560,10 +488,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Firefly",
         icon : FireflyIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -575,10 +500,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Flea",
         icon : FleaIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -590,10 +512,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Fly",
         icon : FlyIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -605,10 +524,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Giant cicada",
         icon : GiantcicadaIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -620,10 +536,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Giant stag",
         icon : GiantstagIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -635,10 +548,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Giant water_bug",
         icon : Giantwater_bugIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -650,10 +560,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Giraffe stag",
         icon : GiraffestagIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -665,10 +572,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Golden stag",
         icon : GoldenstagIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -680,10 +584,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Goliath beetle",
         icon : GoliathbeetleIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -695,10 +596,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Grasshopper",
         icon : GrasshopperIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -710,10 +608,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Great purple_emperor",
         icon : Greatpurple_emperorIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -725,10 +620,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Hermit crab",
         icon : HermitcrabIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -740,10 +632,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Honeybee",
         icon : HoneybeeIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -755,10 +644,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Horned atlas",
         icon : HornedatlasIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -770,10 +656,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Horned dynastid",
         icon : HorneddynastidIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -785,10 +668,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Horned elephant",
         icon : HornedelephantIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -800,10 +680,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Horned hercules",
         icon : HornedherculesIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -815,10 +692,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Jewel beetle",
         icon : JewelbeetleIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -830,10 +704,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Ladybug",
         icon : LadybugIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -845,10 +716,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Long locust",
         icon : LonglocustIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -860,10 +728,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Madagascan sunset_moth",
         icon : Madagascansunset_mothIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -875,10 +740,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Man-faced stink_bug",
         icon : Manfacedstink_bugIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -890,10 +752,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Mantis",
         icon : MantisIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -905,10 +764,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Migratory locust",
         icon : MigratorylocustIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -920,10 +776,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Miyama stag",
         icon : MiyamastagIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -935,10 +788,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Mole cricket",
         icon : MolecricketIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -950,10 +800,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Monarch butterfly",
         icon : MonarchbutterflyIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -965,10 +812,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Mosquito",
         icon : MosquitoIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -980,10 +824,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Moth",
         icon : MothIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -995,10 +836,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Orchid mantis",
         icon : OrchidmantisIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -1010,10 +848,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Paper kite_butterfly",
         icon : Paperkite_butterflyIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -1025,10 +860,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Peacock butterfly",
         icon : PeacockbutterflyIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -1040,10 +872,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Pill bug",
         icon : PillbugIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -1055,10 +884,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Pondskater",
         icon : PondskaterIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -1070,10 +896,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Queen alexandra's_birdwing",
         icon : Queenalexandras_birdwingIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -1085,10 +908,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Rainbow stag",
         icon : RainbowstagIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -1100,10 +920,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Rajah brooke's_birdwing",
         icon : Rajahbrookes_birdwingIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -1115,10 +932,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Red dragonfly",
         icon : ReddragonflyIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -1130,10 +944,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Rice grasshopper",
         icon : RicegrasshopperIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -1145,10 +956,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Robust cicada",
         icon : RobustcicadaIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -1160,10 +968,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Rosalia batesi_beetle",
         icon : Rosaliabatesi_beetleIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -1175,10 +980,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Saw stag",
         icon : SawstagIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -1190,10 +992,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Scarab beetle",
         icon : ScarabbeetleIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -1205,10 +1004,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Scorpion",
         icon : ScorpionIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -1220,10 +1016,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Snail",
         icon : SnailIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -1235,10 +1028,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Spider",
         icon : SpiderIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -1250,10 +1040,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Stinkbug",
         icon : StinkbugIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -1265,10 +1052,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Tarantula",
         icon : TarantulaIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -1280,10 +1064,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Tiger beetle",
         icon : TigerbeetleIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -1295,10 +1076,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Tiger butterfly",
         icon : TigerbutterflyIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -1310,10 +1088,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Violin beetle",
         icon : ViolinbeetleIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -1325,10 +1100,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Walker cicada",
         icon : WalkercicadaIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -1340,10 +1112,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Walking leaf",
         icon : WalkingleafIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -1355,10 +1124,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Walking stick",
         icon : WalkingstickIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -1370,10 +1136,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Wasp",
         icon : WaspIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -1385,10 +1148,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Wharf roach",
         icon : WharfroachIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -1400,10 +1160,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Yellow butterfly",
         icon : YellowbutterflyIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -1415,10 +1172,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Anchovy (fish)",
         icon : AnchovyfishIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -1430,10 +1184,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Angelfish",
         icon : AngelfishIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -1445,10 +1196,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Arapaima",
         icon : ArapaimaIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -1460,10 +1208,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Arowana",
         icon : ArowanaIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -1475,10 +1220,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Barred knifejaw",
         icon : BarredknifejawIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -1490,10 +1232,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Barreleye",
         icon : BarreleyeIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -1505,10 +1244,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Betta",
         icon : BettaIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -1520,10 +1256,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Bitterling",
         icon : BitterlingIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -1535,10 +1268,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Black bass",
         icon : BlackbassIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -1550,10 +1280,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Blowfish",
         icon : BlowfishIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -1565,10 +1292,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Bluegill",
         icon : BluegillIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -1580,10 +1304,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Blue marlin",
         icon : BluemarlinIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -1595,10 +1316,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Butterfly fish",
         icon : ButterflyfishIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -1610,10 +1328,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Carp",
         icon : CarpIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -1625,10 +1340,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Catfish",
         icon : CatfishIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -1640,10 +1352,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Char",
         icon : CharIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -1655,10 +1364,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Cherry salmon",
         icon : CherrysalmonIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -1670,10 +1376,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Clown fish",
         icon : ClownfishIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -1685,10 +1388,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Coelacanth",
         icon : CoelacanthIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -1700,10 +1400,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Crawfish",
         icon : CrawfishIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -1715,10 +1412,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Crucian carp",
         icon : CruciancarpIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -1730,10 +1424,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Dab",
         icon : DabIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -1745,10 +1436,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Dace",
         icon : DaceIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -1760,10 +1448,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Dorado",
         icon : DoradoIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -1775,10 +1460,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Football fish",
         icon : FootballfishIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -1790,10 +1472,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Freshwater goby",
         icon : FreshwatergobyIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -1805,10 +1484,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Frog",
         icon : FrogIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -1820,10 +1496,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Gar",
         icon : GarIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -1835,10 +1508,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Giant snakehead",
         icon : GiantsnakeheadIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -1850,10 +1520,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Giant trevally",
         icon : GianttrevallyIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -1865,10 +1532,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Golden trout",
         icon : GoldentroutIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -1880,10 +1544,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Goldfish",
         icon : GoldfishIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -1895,10 +1556,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Great white_shark",
         icon : Greatwhite_sharkIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -1910,10 +1568,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Guppy",
         icon : GuppyIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -1925,10 +1580,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Hammerhead shark",
         icon : HammerheadsharkIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -1940,10 +1592,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Horse mackerel",
         icon : HorsemackerelIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -1955,10 +1604,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Killifish",
         icon : KillifishIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -1970,10 +1616,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "King salmon",
         icon : KingsalmonIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -1985,10 +1628,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Koi",
         icon : KoiIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -2000,10 +1640,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Loach",
         icon : LoachIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -2015,10 +1652,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Mahi-mahi",
         icon : MahimahiIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -2030,10 +1664,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Mitten crab",
         icon : MittencrabIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -2045,10 +1676,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Moray eel",
         icon : MorayeelIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -2060,10 +1688,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Napoleonfish",
         icon : NapoleonfishIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -2075,10 +1700,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Neon tetra",
         icon : NeontetraIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -2090,10 +1712,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Nibble fish",
         icon : NibblefishIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -2105,10 +1724,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Oarfish",
         icon : OarfishIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -2120,10 +1736,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Ocean sunfish",
         icon : OceansunfishIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -2135,10 +1748,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Olive flounder",
         icon : OliveflounderIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -2150,10 +1760,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Pale chub",
         icon : PalechubIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -2165,10 +1772,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Pike",
         icon : PikeIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -2180,10 +1784,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Piranha",
         icon : PiranhaIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -2195,10 +1796,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Pond smelt",
         icon : PondsmeltIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -2210,10 +1808,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Pop-eyed goldfish",
         icon : PopeyedgoldfishIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -2225,10 +1820,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Puffer fish",
         icon : PufferfishIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -2240,10 +1832,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Rainbowfish",
         icon : RainbowfishIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -2255,10 +1844,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Ranchu goldfish",
         icon : RanchugoldfishIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -2270,10 +1856,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Ray",
         icon : RayIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -2285,10 +1868,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Red snapper",
         icon : RedsnapperIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -2300,10 +1880,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Ribbon eel",
         icon : RibboneelIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -2315,10 +1892,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Saddled bichir",
         icon : SaddledbichirIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -2330,10 +1904,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Salmon",
         icon : SalmonIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -2345,10 +1916,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Saw shark",
         icon : SawsharkIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -2360,10 +1928,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Sea bass",
         icon : SeabassIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -2375,10 +1940,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Sea butterfly",
         icon : SeabutterflyIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -2390,10 +1952,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Sea horse",
         icon : SeahorseIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -2405,10 +1964,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Snapping turtle",
         icon : SnappingturtleIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -2420,10 +1976,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Soft-shelled turtle",
         icon : SoftshelledturtleIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -2435,10 +1988,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Squid",
         icon : SquidIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -2450,10 +2000,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Stringfish",
         icon : StringfishIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -2465,10 +2012,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Sturgeon",
         icon : SturgeonIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -2480,10 +2024,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Suckerfish",
         icon : SuckerfishIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -2495,10 +2036,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Surgeonfish",
         icon : SurgeonfishIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -2510,10 +2048,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Sweetfish",
         icon : SweetfishIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -2525,10 +2060,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Tadpole",
         icon : TadpoleIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -2540,10 +2072,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Tilapia",
         icon : TilapiaIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -2555,10 +2084,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Tuna",
         icon : TunaIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -2570,10 +2096,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Whale shark",
         icon : WhalesharkIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -2585,10 +2108,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Yellow perch",
         icon : YellowperchIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -2600,10 +2120,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Zebra turkeyfish",
         icon : ZebraturkeyfishIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -2615,10 +2132,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Abalone",
         icon : AbaloneIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -2631,10 +2145,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Acorn barnacle",
         icon : AcornbarnacleIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -2647,10 +2158,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Chambered nautilus",
         icon : ChamberednautilusIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -2663,10 +2171,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Dungeness crab",
         icon : DungenesscrabIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -2679,10 +2184,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Firefly squid",
         icon : FireflysquidIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -2695,10 +2197,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Flatworm",
         icon : FlatwormIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -2711,10 +2210,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Gazami crab",
         icon : GazamicrabIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -2727,10 +2223,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Giant isopod",
         icon : GiantisopodIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -2743,10 +2236,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Gigas giant_clam",
         icon : Gigasgiant_clamIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -2759,10 +2249,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Horseshoe crab",
         icon : HorseshoecrabIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -2775,10 +2262,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Lobster",
         icon : LobsterIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -2791,10 +2275,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Mantis shrimp",
         icon : MantisshrimpIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -2807,10 +2288,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Moon jellyfish",
         icon : MoonjellyfishIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -2823,10 +2301,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Mussel",
         icon : MusselIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -2839,10 +2314,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Octopus",
         icon : OctopusIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -2855,10 +2327,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Oyster",
         icon : OysterIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -2871,10 +2340,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Pearl oyster",
         icon : PearloysterIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -2887,10 +2353,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Red king_crab",
         icon : Redking_crabIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -2903,10 +2366,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Scallop",
         icon : ScallopIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -2919,10 +2379,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Seaweed",
         icon : SeaweedIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -2935,10 +2392,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Sea anemone",
         icon : SeaanemoneIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -2951,10 +2405,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Sea cucumber",
         icon : SeacucumberIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -2967,10 +2418,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Sea grapes",
         icon : SeagrapesIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -2983,10 +2431,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Sea pig",
         icon : SeapigIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -2999,10 +2444,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Sea pineapple",
         icon : SeapineappleIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -3015,10 +2457,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Sea slug",
         icon : SeaslugIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -3031,10 +2470,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Sea star",
         icon : SeastarIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -3047,10 +2483,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Sea urchin",
         icon : SeaurchinIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -3063,10 +2496,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Slate pencil_urchin",
         icon : Slatepencil_urchinIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -3079,10 +2509,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Snow crab",
         icon : SnowcrabIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -3095,10 +2522,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Spider crab",
         icon : SpidercrabIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -3111,10 +2535,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Spiny lobster",
         icon : SpinylobsterIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -3127,10 +2548,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Spotted garden_eel",
         icon : Spottedgarden_eelIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -3143,10 +2561,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Sweet shrimp",
         icon : SweetshrimpIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -3159,10 +2574,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Tiger prawn",
         icon : TigerprawnIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -3175,10 +2587,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Turban shell",
         icon : TurbanshellIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -3191,10 +2600,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Umbrella octopus",
         icon : UmbrellaoctopusIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -3207,10 +2613,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Vampire squid",
         icon : VampiresquidIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -3223,10 +2626,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Venus' flower_basket",
         icon : Venusflower_basketIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 
@@ -3239,10 +2639,7 @@ export const acnh_data: Acnh_data_interface[] = [
         name : "Whelk",
         icon : WhelkIcon,
         weather: 0,
-        month : {
-            north: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            south: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        },
+        month : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         time_of_day : [0, 24], 
         totalCatches: 20,
 

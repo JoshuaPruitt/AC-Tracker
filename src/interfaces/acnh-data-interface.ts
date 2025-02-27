@@ -3,7 +3,17 @@ export interface Acnh_data_interface {
     type: number,
     name: string,
     icon: string,
-    description: string,
-    month: number,
-    time_of_day: number
+    weather: number,
+    month: {
+        north: number[],
+        south: number[],
+    },
+    time_of_day: number[],
+    totalCatches: number,
+
+    bugLocation?: number,
+    fishLocation?: number,
+
+    seaCreatureShadowSize?: number,
+    seaCreatureShadowMoveMent?: number,
 }

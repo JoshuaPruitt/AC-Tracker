@@ -92,7 +92,15 @@ export default function DisplayIcons() {
         return total.filter(
             (item, index, self) =>
                 index === self.findIndex((i) => i.name === item.name) // Ensure uniqueness
-        ).filter(item => currentTime && item.time_of_day >= currentTime.hour);
+            //find items that starting time is less than the current time and ending time is more than the current time 
+        ).filter(item => {
+            //if statement prevents items with a starting time of a higher number than the ending time from not being added to current bugs
+            if(item.time_of_day[0] < item.time_of_day[1]){
+                return currentTime && item.time_of_day[0] <= currentTime.hour && item.time_of_day[1] >= currentTime.hour && currentTime.hour && item.month.north[currentTime.month] === 1
+            } else {
+                return currentTime && item.time_of_day[1] <= currentTime.hour && item.time_of_day[0] >= currentTime.hour && currentTime.hour && item.month.north[currentTime.month] === 1
+            }
+        });
     }, [total, currentTime]);
 
     const addTotalItem = (item: Acnh_data_interface) => {
@@ -149,9 +157,16 @@ export default function DisplayIcons() {
         setUncategorized(total.filter((item) => item.type === 0));
 
         if (currentTime) {
-            setTimedItems(total.filter((item) => item.time_of_day >= currentTime.hour));
-        }
-    }, [total, currentTime]); // Only recreates if total or currentTime changes
+            setTimedItems(total.filter(item => {
+                //if statement prevents items with a starting time of a higher number than the ending time from not being added to current bugs
+                if(item.time_of_day[0] < item.time_of_day[1]){
+                    return currentTime && item.time_of_day[0] <= currentTime.hour && item.time_of_day[1] >= currentTime.hour && item.month.north[currentTime.month] === 1
+                } else {
+                    return currentTime && item.time_of_day[1] <= currentTime.hour && item.time_of_day[0] >= currentTime.hour && item.month.north[currentTime.month] === 1
+                }
+            }));
+        };
+    }, [total, currentTime]);//Oly recreates if total or currentTime changes
 
     // set loading to true on start and once data is in then set loading to false
     useEffect(() => {
@@ -200,6 +215,7 @@ export default function DisplayIcons() {
                     {currentTime ? 
                         <div>
                             <h4>{`Time: ${currentTime?.hour}:${currentTime?.minute}:${currentTime?.seconds}`}</h4>
+                            <h4>{`Month: ${currentTime.month}`}</h4>
                         </div> 
                         : 
                         ""
