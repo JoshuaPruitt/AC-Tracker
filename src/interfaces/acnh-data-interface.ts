@@ -11,9 +11,9 @@ export interface Acnh_data_interface {
     time_of_day: number[],
     totalCatches: number,
 
-    bugLocation?: number,
-    fishLocation?: number,
+    bugLocation?: string,
+    fishLocation?: string,
 
-    seaCreatureShadowSize?: number,
-    seaCreatureShadowMoveMent?: number,
+    seaCreatureShadowSize?: string,
+    seaCreatureShadowMoveMent?: string,
 }

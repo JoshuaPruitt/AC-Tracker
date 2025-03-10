@@ -4,11 +4,23 @@ import { get_data, save_data, remove_data } from "./localStorage.js";
 import { Acnh_data_interface } from "../interfaces/acnh-data-interface.js";
 import { acnh_data } from "../data/acnh-data.js";
 
+
 import { getTimeDataIp } from '../api/timeData.js';
 import Time from "../interfaces/time-interface.js";
 
 
 export default function DisplayIcons() {
+    const [filter, setFilter] = useState({
+          bugs: true,
+          fish: true,
+          seaCreatures: true,
+          total: false,
+          uncatagorized: false
+    });
+
+    const [hoveredItem, setHoveredItem] = useState<Acnh_data_interface | null>(null);
+    const [isOpen, setIsOpen] = useState(false)
+
     const filePaths: Acnh_data_interface[] = acnh_data;
     const [loading, setLoading] = useState<boolean>(true);
 
@@ -96,7 +108,7 @@ export default function DisplayIcons() {
         ).filter(item => {
             //if statement prevents items with a starting time of a higher number than the ending time from not being added to current bugs
             if(item.time_of_day[0] < item.time_of_day[1]){
-                return currentTime && item.time_of_day[0] <= currentTime.hour && item.time_of_day[1] >= currentTime.hour && currentTime.hour && item.month.north[currentTime.month] === 1
+                return currentTime && item.time_of_day[0] <= currentTime.hour && item.time_of_day[1] >= currentTime.hour && currentTime.hour && item.month.north[currentTime.month] === 1 //Edit later to be based on hemisphere
             } else {
                 return currentTime && item.time_of_day[1] <= currentTime.hour && item.time_of_day[0] >= currentTime.hour && currentTime.hour && item.month.north[currentTime.month] === 1
             }
@@ -168,6 +180,14 @@ export default function DisplayIcons() {
         };
     }, [total, currentTime]);//Oly recreates if total or currentTime changes
 
+    const handleMouseEnter = (item: Acnh_data_interface) => {
+        setHoveredItem(item);
+    };
+    
+    // const handleMouseLeave = () => {
+    //     setHoveredItem(null);
+    // };
+
     // set loading to true on start and once data is in then set loading to false
     useEffect(() => {
         setLoading(true);
@@ -207,10 +227,47 @@ export default function DisplayIcons() {
         setTimedItems(uniqueTimedItems)
     }, [uniqueTimedItems]);
 
+    useEffect(() => {
+        console.log(filter)
+    }, [filter])
+
     return (
         <div>
             {loading ? <h2>Loading...</h2> : 
-            <div>
+                <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+                    <div className="bg-white rounded-lg p-4 w-1/3 shadow-lg relative">
+                    <button 
+                        type="button" 
+                        className="absolute top-2 right-2 text-gray-600 hover:text-gray-800" 
+                        id="menu-button"
+                        onClick={() => setIsOpen(!isOpen)}
+                    >
+                        Filters
+                    </button>
+
+                    {isOpen ? 
+                        <div className="space-y-2">
+                            <div className="py-1">
+                                {Object.keys(filter).map((value, index) => (
+                                    <label key={index} className="flex items-center space-x-2">
+                                        <input 
+                                            type="checkbox"
+                                            checked={filter[value as keyof typeof filter]}
+                                            onChange={() => setFilter((prev) => ({
+                                                ...prev, 
+                                                [value]: !prev[value as keyof typeof filter]
+                                            }))} 
+                                            className="mr-2"
+                                        />
+                                        {value}
+                                        {/* {key.charAt(0).toUpperCase() + key.slice(1)} */}
+                                    </label>
+                                ))}
+                            </div>
+                        </div> : ''
+                    }
+                </div>
+
                 <div>
                     {currentTime ? 
                         <div>
@@ -222,12 +279,27 @@ export default function DisplayIcons() {
                     }
                 </div>
 
+                {/* Display enlarged info box when hovering */}
+                {hoveredItem && (
+                    <div className="fixed bottom-10 left-1/2 transform -translate-x-1/2 bg-white p-4 shadow-lg rounded-lg z-50">
+                        <h3 className="text-lg font-semibold">{hoveredItem.name}</h3>
+                        <p>Type: {hoveredItem.type}</p>
+                        <p>Availability: {hoveredItem.month.north.join(", ")}</p>
+                        <p>Active Time: {hoveredItem.time_of_day.join(" - ")}</p>
+                    </div>
+                )}
+
                 <div>
                     <h2>Items available at this time</h2>
                     {
                         timedItems.map((item: any, index: number) => {
                             return (
-                                <button key={index} onClick={() => selectItem(item)}>
+                                <button 
+                                    key={index} 
+                                    onClick={() => selectItem(item)}
+                                    onMouseEnter={() => handleMouseEnter(item)}
+                                    className="transition-transform duration-200 ease-in-out hover:scale-125"
+                                    >
                                     <img
                                         src={item.icon}
                                         alt={item.name}
@@ -241,109 +313,148 @@ export default function DisplayIcons() {
                     }
                 </div>
 
-                <div>
-                    <h2>Bugs</h2>
-                    {
-                        bugs.map((item: any, index: number) => {
-                            return (
-                                <button key={index} onClick={() => selectItem(item)}>
-                                    <img
-                                        src={item.icon}
-                                        alt={item.name}
+                {
+                    filter.bugs ? 
+                        <div>
+                            <h2>Bugs</h2>
+                            {
+                                bugs.map((item: any, index: number) => {
+                                    return (
+                                        <button 
+                                            key={index} 
+                                            onClick={() => selectItem(item)}
+                                            onMouseEnter={() => handleMouseEnter(item)}
+                                            >
+                                            <img
+                                                src={item.icon}
+                                                alt={item.name}
 
-                                        width={30}
-                                        height={30}
-                                    />
-                                </button>
-                            )
-                        })
-                    }
-                </div>
+                                                width={30}
+                                                height={30}
+                                            />
+                                        </button>
+                                    )
+                                })
+                            }
+                        </div>
+                        :  ''
+                }
+                
 
-                <div>
-                    <h2>Fish</h2>
-                    {
-                        fish.map((item: any, index: number) => {
-                            return (
-                                <button key={index} onClick={() => selectItem(item)}>
-                                    <img
-                                        src={item.icon}
-                                        alt={item.name}
+                {filter.fish ? 
+                    <div>
+                        <h2>Fish</h2>
+                        {
+                            fish.map((item: any, index: number) => {
+                                return (
+                                    <button 
+                                            key={index} 
+                                            onClick={() => selectItem(item)}
+                                            onMouseEnter={() => handleMouseEnter(item)}
+                                        >
+                                        <img
+                                            src={item.icon}
+                                            alt={item.name}
 
-                                        width={30}
-                                        height={30}
-                                    />
-                                </button>
-                            )
-                        })
-                    }
-                </div>
-
-                <div>
-                    <h2>Sea Creatures</h2>
-                    {
-                        seaCreatures.map((item: any, index: number) => {
-                            return (
-                                <button key={index} onClick={() => selectItem(item)}>
-                                    <img
-                                        src={item.icon}
-                                        alt={item.name}
-
-                                        width={30}
-                                        height={30}
-                                    />
-                                </button>
-                            )
-                        })
-                    }
-                </div>
-
-                {uncatagorized ? "" : 
-                <div>
-                    <h2>Uncagegorized</h2>
-                    {
-                        seaCreatures.map((item: any, index: number) => {
-                            return (
-                                <button key={index} onClick={() => selectItem(item)}>
-                                    <img
-                                        src={item.icon}
-                                        alt={item.name}
-
-                                        width={30}
-                                        height={30}
-                                    />
-                                </button>
-                            )
-                        })
-                    }
-                </div>
+                                            width={30}
+                                            height={30}
+                                        />
+                                    </button>
+                                )
+                            })
+                        }
+                    </div> : ''
+                }
+                
+                {filter.seaCreatures ? 
+                    <div>
+                        <h2>Sea Creatures</h2>
+                        {
+                            seaCreatures.map((item: any, index: number) => {
+                                return (
+                                    <button 
+                                            key={index} 
+                                            onClick={() => selectItem(item)}
+                                            onMouseEnter={() => handleMouseEnter(item)}
+                                        >
+                                        <img
+                                            src={item.icon}
+                                            alt={item.name}
+    
+                                            width={30}
+                                            height={30}
+                                        />
+                                    </button>
+                                )
+                            })
+                        }
+                    </div> : ''
                 }
 
-                <div>
-                    <h2>Total</h2>
-                    {
-                        total.map((item: any, index: number) => {
-                            return (
-                                <button key={index} onClick={() => selectItem(item)}>
-                                    <img
-                                        src={item.icon}
-                                        alt={item.name}
+                {filter.uncatagorized ? 
+                    <div>
+                        {uncatagorized ? <h2>Nothing in Uncategorized at this time...</h2> : 
+                            <div>
+                                <h2>Uncagegorized</h2>
+                                {
+                                    seaCreatures.map((item: any, index: number) => {
+                                        return (
+                                            <button 
+                                                key={index} 
+                                                onClick={() => selectItem(item)}
+                                                onMouseEnter={() => handleMouseEnter(item)}
+                                            >
+                                                <img
+                                                    src={item.icon}
+                                                    alt={item.name}
+            
+                                                    width={30}
+                                                    height={30}
+                                                />
+                                            </button>
+                                        )
+                                    })
+                                }
+                            </div>
+                        }
+                    </div> : ''
+                }
 
-                                        width={30}
-                                        height={30}
-                                    />
-                                </button>
-                            )
-                        })
-                    }
-                </div>
+                {filter.total ? 
+                    <div>
+                        <h2>Total</h2>
+                        {
+                            total.map((item: any, index: number) => {
+                                return (
+                                    <button 
+                                            key={index} 
+                                            onClick={() => selectItem(item)}
+                                            onMouseEnter={() => handleMouseEnter(item)}
+                                        >
+                                        <img
+                                            src={item.icon}
+                                            alt={item.name}
+
+                                            width={30}
+                                            height={30}
+                                        />
+                                    </button>
+                                )
+                            })
+                        }
+                    </div> : ''
+                }
 
                 <div>
                     <h2>Selected</h2>
                     {
                         selectedItems.map((item: any, index: number) => {
                             return (
-                                <button key={index} onClick={() => selectAlreadySelected(item)}>
+                                <button 
+                                    key={index} 
+                                    onClick={() => selectAlreadySelected(item)}
+                                    onMouseEnter={() => handleMouseEnter(item)}
+                                    >
                                     <img
                                         src={item.icon}
                                         alt={item.name}
