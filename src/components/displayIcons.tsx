@@ -11,11 +11,13 @@ import Time from "../interfaces/time-interface.js";
 
 export default function DisplayIcons() {
     const [filter, setFilter] = useState({
-          bugs: true,
-          fish: true,
-          seaCreatures: true,
-          total: false,
-          uncatagorized: false
+        timed: true,
+        bugs: true,
+        fish: true,
+        seaCreatures: true,
+        total: false,
+        uncatagorized: false,
+        selectedItems: false
     });
 
     const [hoveredItem, setHoveredItem] = useState<Acnh_data_interface | null>(null);
@@ -271,8 +273,8 @@ export default function DisplayIcons() {
                 <div>
                     {currentTime ? 
                         <div>
-                            <h4>{`Time: ${currentTime?.hour}:${currentTime?.minute}:${currentTime?.seconds}`}</h4>
-                            <h4>{`Month: ${currentTime.month}`}</h4>
+                            <h4 className="text-white">{`Current Time: ${currentTime?.hour}:${currentTime?.minute}:${currentTime?.seconds}`}</h4>
+                            <h4 className="text-white">{`Month: ${currentTime.month}`}</h4>
                         </div> 
                         : 
                         ""
@@ -289,34 +291,36 @@ export default function DisplayIcons() {
                     </div>
                 )}
 
-                <div>
-                    <h2>Items available at this time</h2>
-                    {
-                        timedItems.map((item: any, index: number) => {
-                            return (
-                                <button 
-                                    key={index} 
-                                    onClick={() => selectItem(item)}
-                                    onMouseEnter={() => handleMouseEnter(item)}
-                                    className="transition-transform duration-200 ease-in-out hover:scale-125"
-                                    >
-                                    <img
-                                        src={item.icon}
-                                        alt={item.name}
+                {filter.timed ? 
+                    <div>
+                        <h2 className="text-white">Items available at this time</h2>
+                        {
+                            timedItems.map((item: any, index: number) => {
+                                return (
+                                    <button 
+                                        key={index} 
+                                        onClick={() => selectItem(item)}
+                                        onMouseEnter={() => handleMouseEnter(item)}
+                                        className="transition-transform duration-200 ease-in-out hover:scale-125"
+                                        >
+                                        <img
+                                            src={item.icon}
+                                            alt={item.name}
 
-                                        width={30}
-                                        height={30}
-                                    />
-                                </button>
-                            )
-                        })
-                    }
-                </div>
+                                            width={30}
+                                            height={30}
+                                        />
+                                    </button>
+                                )
+                            })
+                        }
+                    </div> : ""
+                }
+                
 
-                {
-                    filter.bugs ? 
+                {filter.bugs ? 
                         <div>
-                            <h2>Bugs</h2>
+                            <h2 className="text-white">Bugs</h2>
                             {
                                 bugs.map((item: any, index: number) => {
                                     return (
@@ -343,7 +347,7 @@ export default function DisplayIcons() {
 
                 {filter.fish ? 
                     <div>
-                        <h2>Fish</h2>
+                        <h2 className="text-white">Fish</h2>
                         {
                             fish.map((item: any, index: number) => {
                                 return (
@@ -368,7 +372,7 @@ export default function DisplayIcons() {
                 
                 {filter.seaCreatures ? 
                     <div>
-                        <h2>Sea Creatures</h2>
+                        <h2 className="text-white">Sea Creatures</h2>
                         {
                             seaCreatures.map((item: any, index: number) => {
                                 return (
@@ -395,7 +399,7 @@ export default function DisplayIcons() {
                     <div>
                         {uncatagorized ? <h2>Nothing in Uncategorized at this time...</h2> : 
                             <div>
-                                <h2>Uncagegorized</h2>
+                                <h2 className="text-white">Uncagegorized</h2>
                                 {
                                     seaCreatures.map((item: any, index: number) => {
                                         return (
@@ -422,7 +426,7 @@ export default function DisplayIcons() {
 
                 {filter.total ? 
                     <div>
-                        <h2>Total</h2>
+                        <h2 className="text-white">Total</h2>
                         {
                             total.map((item: any, index: number) => {
                                 return (
@@ -445,28 +449,31 @@ export default function DisplayIcons() {
                     </div> : ''
                 }
 
-                <div>
-                    <h2>Selected</h2>
-                    {
-                        selectedItems.map((item: any, index: number) => {
-                            return (
-                                <button 
-                                    key={index} 
-                                    onClick={() => selectAlreadySelected(item)}
-                                    onMouseEnter={() => handleMouseEnter(item)}
-                                    >
-                                    <img
-                                        src={item.icon}
-                                        alt={item.name}
+                {filter.selectedItems ?  
+                    <div>
+                        <h2 className="text-white">Selected</h2>
+                        {
+                            selectedItems.map((item: any, index: number) => {
+                                return (
+                                    <button 
+                                        key={index} 
+                                        onClick={() => selectAlreadySelected(item)}
+                                        onMouseEnter={() => handleMouseEnter(item)}
+                                        >
+                                        <img
+                                            src={item.icon}
+                                            alt={item.name}
 
-                                        width={30}
-                                        height={30}
-                                    />
-                                </button>
-                            )
-                        })
-                    }
-                </div>
+                                            width={30}
+                                            height={30}
+                                        />
+                                    </button>
+                                )
+                            })
+                        }
+                    </div> : ''
+                }
+               
 
                 <div>
                     <button onClick={() => saveItems()}>Save</button>
