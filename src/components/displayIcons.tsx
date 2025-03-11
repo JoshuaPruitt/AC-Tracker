@@ -20,10 +20,7 @@ export default function DisplayIcons() {
         selectedItems: false
     });
 
-    const [iconDimensions, setIconDimensions] = useState({
-        width: 40,
-        height: 40
-    })
+    const [iconDimensions, setIconDimensions] = useState<number>(40)
 
     const [hoveredItem, setHoveredItem] = useState<Acnh_data_interface | null>(null);
     const [clickedOnOnce, setClickedOn] = useState<boolean>(false);
@@ -275,7 +272,7 @@ export default function DisplayIcons() {
         if (hoveredItem?.type == 1){
             return (
                 <div className={containerClass}>
-                    <img src={hoveredItem.icon} alt={hoveredItem.name} width={35} height={35}></img>
+                    <img src={hoveredItem.icon} alt={hoveredItem.name} width={iconDimensions} height={iconDimensions}></img>
                     <h3 className={fontClass}>{hoveredItem.name}</h3>
                     <p>Type: <span className={subFontClass}>{"Bug"}</span></p>
                     <p>Availability: <span className={subFontClass}>{setMonths(hoveredItem.month.north)}</span></p>
@@ -287,7 +284,7 @@ export default function DisplayIcons() {
         } else if (hoveredItem?.type == 2){
             return (
                 <div className={containerClass}>
-                    <img src={hoveredItem.icon} alt={hoveredItem.name} width={35} height={35}></img>
+                    <img src={hoveredItem.icon} alt={hoveredItem.name} width={iconDimensions} height={iconDimensions}></img>
                     <h3 className={fontClass}>{hoveredItem.name}</h3>
                     <p>Type: <span className={subFontClass}>{"Fish"}</span></p>
                     <p>Availability: <span className={subFontClass}>{setMonths(hoveredItem.month.north)}</span></p>
@@ -299,7 +296,7 @@ export default function DisplayIcons() {
         } else if (hoveredItem?.type == 3){
             return (
                 <div className={containerClass}>
-                    <img src={hoveredItem.icon} alt={hoveredItem.name} width={35} height={35}></img>
+                    <img src={hoveredItem.icon} alt={hoveredItem.name} width={iconDimensions} height={iconDimensions}></img>
                     <h3 className={fontClass}>{hoveredItem.name}</h3>
                     <p>Type: <span className={subFontClass}>{"Sea Creature"}</span></p>
                     <p>Availability: <span className={subFontClass}>{setMonths(hoveredItem.month.north)}</span></p>
@@ -357,7 +354,7 @@ export default function DisplayIcons() {
     return (
         <div>
             {loading ? <h2>Loading...</h2> : 
-                <div>
+                <div onMouseLeave={() => setHoveredItem(null)}>
                     <div className=" bg-white rounded-lg p-4 w-1/3 shadow-lg max-w-50">
                         <button 
                             type="button" 
@@ -405,7 +402,7 @@ export default function DisplayIcons() {
                     {/* Display enlarged info box when hovering */}
                     {hoveredItem && setHoveredItemInformation()}
 
-                    <div className="inset-0 flex flex-wrap items-center justify-center bg-black bg-opacity-50 z-50 p-3 max-h-200 rounded-lg">
+                    <div className="inset-0 flex flex-wrap items-center justify-center bg-black bg-opacity-50 z-50 p-3 max-h-200 rounded-lg" >
                     {filter.timed ? 
                         <div className="flex flex-wrap justify-baseline mt-5">
                             <h2 className="text-white align-text-top">Timed Items</h2>
@@ -421,8 +418,8 @@ export default function DisplayIcons() {
                                                 src={item.icon}
                                                 alt={item.name}
 
-                                                width={iconDimensions.width}
-                                                height={iconDimensions.height}
+                                                width={iconDimensions}
+                                                height={iconDimensions}
                                             />
                                         </button>
                                     )
@@ -447,8 +444,8 @@ export default function DisplayIcons() {
                                                     src={item.icon}
                                                     alt={item.name}
 
-                                                    width={iconDimensions.width}
-                                                    height={iconDimensions.height}
+                                                    width={iconDimensions}
+                                                    height={iconDimensions}
                                                 />
                                             </button>
                                         )
@@ -474,8 +471,8 @@ export default function DisplayIcons() {
                                                 src={item.icon}
                                                 alt={item.name}
 
-                                                width={iconDimensions.width}
-                                                height={iconDimensions.height}
+                                                width={iconDimensions}
+                                                height={iconDimensions}
                                             />
                                         </button>
                                     )
@@ -499,8 +496,8 @@ export default function DisplayIcons() {
                                                 src={item.icon}
                                                 alt={item.name}
         
-                                                width={iconDimensions.width}
-                                                height={iconDimensions.height}
+                                                width={iconDimensions}
+                                                height={iconDimensions}
                                             />
                                         </button>
                                     )
@@ -526,8 +523,8 @@ export default function DisplayIcons() {
                                                         src={item.icon}
                                                         alt={item.name}
                 
-                                                        width={iconDimensions.width}
-                                                        height={iconDimensions.height}
+                                                        width={iconDimensions}
+                                                        height={iconDimensions}
                                                     />
                                                 </button>
                                             )
@@ -553,8 +550,8 @@ export default function DisplayIcons() {
                                                 src={item.icon}
                                                 alt={item.name}
 
-                                                width={iconDimensions.width}
-                                                height={iconDimensions.height}
+                                                width={iconDimensions}
+                                                height={iconDimensions}
                                             />
                                         </button>
                                     )
@@ -578,8 +575,8 @@ export default function DisplayIcons() {
                                                 src={item.icon}
                                                 alt={item.name}
 
-                                                width={iconDimensions.width}
-                                                height={iconDimensions.height}
+                                                width={iconDimensions}
+                                                height={iconDimensions}
                                             />
                                         </button>
                                     )
@@ -597,21 +594,10 @@ export default function DisplayIcons() {
                 </div>
 
                 <div>
-                    <label>Icon Width: </label>
-                    <input value={iconDimensions.width} onChange={(e) => {
-                        const {name, value} = e.target
-                        setIconDimensions({
-                            ...iconDimensions,
-                            [name]: value
-                        })
-                    }}></input>
-                    <label>Icon height: </label>
-                    <input value={iconDimensions.height} onChange={(e) => {
-                        const {name, value} = e.target
-                        setIconDimensions({
-                            ...iconDimensions,
-                            [name]: value
-                        })
+                    <label>Icon Size: </label>
+                    <input value={iconDimensions || ''} onChange={(e) => {
+                        const {value} = e.target
+                        setIconDimensions(Number(value))
                     }}></input>
                 </div>
             </div>}
