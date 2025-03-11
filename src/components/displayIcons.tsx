@@ -20,7 +20,13 @@ export default function DisplayIcons() {
         selectedItems: false
     });
 
+    const [iconDimensions, setIconDimensions] = useState({
+        width: 40,
+        height: 40
+    })
+
     const [hoveredItem, setHoveredItem] = useState<Acnh_data_interface | null>(null);
+    const [clickedOnOnce, setClickedOn] = useState<boolean>(false);
     const [isOpen, setIsOpen] = useState(false)
 
     const filePaths: Acnh_data_interface[] = acnh_data;
@@ -158,6 +164,19 @@ export default function DisplayIcons() {
         setTotal((prevTotal) => prevTotal.filter((i) => i.name !== item.name));
     };
 
+    const clickOnItem = (item: Acnh_data_interface) => {
+        if(!clickedOnOnce){
+            setHoveredItem(item)
+            setClickedOn(true)
+        } else if (clickedOnOnce && item == hoveredItem){
+            setHoveredItem(null)
+            selectItem(item)
+            setClickedOn(false)
+        } else if (clickedOnOnce && item != hoveredItem){
+            setHoveredItem(item)
+        }
+    }
+
     const selectItem = (item: Acnh_data_interface) => {
         removeItemTotal(item) // remove item from the total
         addSelectedItem(item) // add item to selected item
@@ -182,9 +201,99 @@ export default function DisplayIcons() {
         };
     }, [total, currentTime]);//Oly recreates if total or currentTime changes
 
-    const handleMouseEnter = (item: Acnh_data_interface) => {
-        setHoveredItem(item);
-    };
+    const setHoveredItemInformation = () => {
+        const containerClass = 'fixed bottom-10 left-1/2 transform -translate-x-1/2 bg-white p-4 shadow-lg rounded-lg z-50 w-2xl';
+        const fontClass = "text-lg font-semibold";
+
+        const setMonths = (months: number[]) => {
+            if(months){
+                let monthsActive: string = ''
+                for(let i = 0; i < months.length; i++){
+                    if(months[i] == 1 && i == 0){
+                        monthsActive += " January,"
+                    } else if(months[i] == 1 && i == 1){
+                        monthsActive += " Febuary,"
+                    } else if(months[i] == 1 && i == 2){
+                        monthsActive += " March,"
+                    } else if(months[i] == 1 && i == 3){
+                        monthsActive += " April,"
+                    } else if(months[i] == 1 && i == 4){
+                        monthsActive += " May,"
+                    } else if(months[i] == 1 && i == 5){
+                        monthsActive += " June,"
+                    }  else if(months[i] == 1 && i == 6){
+                        monthsActive += " July,"
+                    } else if(months[i] == 1 && i == 7){
+                        monthsActive += " August,"
+                    } else if(months[i] == 1 && i == 8){
+                        monthsActive += " September,"
+                    } else if(months[i] == 1 && i == 9){
+                        monthsActive += " October,"
+                    } else if(months[i] == 1 && i == 10){
+                        monthsActive += " November,"
+                    } else if(months[i] == 1 && i == 11){
+                        monthsActive += " December"
+                    }
+                } 
+                return monthsActive
+            }
+        };
+
+        const setTime = (time: number[] | undefined) => {
+            const retTime: string[] = [];
+
+            if(!time){
+                return ['', '']
+            }
+
+            for(let i = 0; i < time.length; i++){
+                if(time[i] > 12){
+                    retTime[i] = `${time[i] - 12}pm` 
+                } else if(time[i] < 12){
+                    retTime[i] = `${time[i]}am`
+                }
+            }
+            return retTime
+        }
+
+        const adapTime = setTime(hoveredItem?.time_of_day)
+
+        if (hoveredItem?.type == 1){
+            return (
+                <div className={containerClass}>
+                    <img src={hoveredItem.icon} alt={hoveredItem.name} width={35} height={35}></img>
+                    <h3 className={fontClass}>{hoveredItem.name}</h3>
+                    <p>Type: {"Bug"}</p>
+                    <p>Availability: {setMonths(hoveredItem.month.north)}</p>
+                    <p>Active Time: {adapTime.join(" - ")}</p>
+                    <p>Found: {hoveredItem.bugLocation}</p>
+                </div>
+            )
+        } else if (hoveredItem?.type == 2){
+            return (
+                <div className={containerClass}>
+                    <img src={hoveredItem.icon} alt={hoveredItem.name} width={35} height={35}></img>
+                    <h3 className={fontClass}>{hoveredItem.name}</h3>
+                    <p>Type: {"Fish"}</p>
+                    <p>Availability: {setMonths(hoveredItem.month.north)}</p>
+                    <p>Active Time: {adapTime.join(" - ")}</p>
+                    <p>Found: {hoveredItem.fishLocation}</p>
+                </div>
+            )
+        } else if (hoveredItem?.type == 3){
+            return (
+                <div className={containerClass}>
+                    <img src={hoveredItem.icon} alt={hoveredItem.name} width={35} height={35}></img>
+                    <h3 className={fontClass}>{hoveredItem.name}</h3>
+                    <p>Type: {"Sea Creature"}</p>
+                    <p>Availability: {setMonths(hoveredItem.month.north)}</p>
+                    <p>Active Time: {adapTime.join(" - ")}</p>
+                    <p>Sea Creature Shadow Size: {hoveredItem.seaCreatureShadowSize}</p>
+                    <p>Sea Creature Shadow Movement: {hoveredItem.seaCreatureShadowMoveMent}</p>
+                </div>
+            )
+        }
+    }
     
     // const handleMouseLeave = () => {
     //     setHoveredItem(null);
@@ -192,13 +301,13 @@ export default function DisplayIcons() {
 
     // set loading to true on start and once data is in then set loading to false
     useEffect(() => {
-        setLoading(true);
         try {
             const dataFunc = async () => {
                 const timeData = await getTimeDataIp() // grab time data
                 setCurrentTime(timeData) // set time data
 
                 addData() // grab total data
+                stopLoading() // stop loading state
             }
 
             dataFunc()
@@ -213,16 +322,16 @@ export default function DisplayIcons() {
         console.log("selected Items:", selectedItems)
 
         setItems() // set the items
-        stopLoading() // stop loading state
         
     }, [total, selectedItems, setItems]);
 
     // remove total duplicates once the component has finished loading
     useEffect(() => {
+        setLoading(true);
         pullStorage()
         removeTotalDup()
     
-    }, [loading]);
+    }, []);
 
     // Ensures timedItems contains no duplicate entries
     useEffect(() => {
@@ -236,249 +345,243 @@ export default function DisplayIcons() {
     return (
         <div>
             {loading ? <h2>Loading...</h2> : 
-                <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-                    <div className="bg-white rounded-lg p-4 w-1/3 shadow-lg relative">
-                    <button 
-                        type="button" 
-                        className="absolute top-2 right-2 text-gray-600 hover:text-gray-800" 
-                        id="menu-button"
-                        onClick={() => setIsOpen(!isOpen)}
-                    >
-                        Filters
-                    </button>
-
-                    {isOpen ? 
-                        <div className="space-y-2">
-                            <div className="py-1">
-                                {Object.keys(filter).map((value, index) => (
-                                    <label key={index} className="flex items-center space-x-2">
-                                        <input 
-                                            type="checkbox"
-                                            checked={filter[value as keyof typeof filter]}
-                                            onChange={() => setFilter((prev) => ({
-                                                ...prev, 
-                                                [value]: !prev[value as keyof typeof filter]
-                                            }))} 
-                                            className="mr-2"
-                                        />
-                                        {value}
-                                        {/* {key.charAt(0).toUpperCase() + key.slice(1)} */}
-                                    </label>
-                                ))}
-                            </div>
-                        </div> : ''
-                    }
-                </div>
-
                 <div>
-                    {currentTime ? 
-                        <div>
-                            <h4 className="text-white">{`Current Time: ${currentTime?.hour}:${currentTime?.minute}:${currentTime?.seconds}`}</h4>
-                            <h4 className="text-white">{`Month: ${currentTime.month}`}</h4>
-                        </div> 
-                        : 
-                        ""
-                    }
-                </div>
+                    <div className=" bg-white rounded-lg p-4 w-1/3 shadow-lg max-w-50">
+                        <button 
+                            type="button" 
+                            className="text-gray-600 hover:text-gray-800" 
+                            id="menu-button"
+                            onClick={() => setIsOpen(!isOpen)}
+                        >
+                            Filters
+                        </button>
 
-                {/* Display enlarged info box when hovering */}
-                {hoveredItem && (
-                    <div className="fixed bottom-10 left-1/2 transform -translate-x-1/2 bg-white p-4 shadow-lg rounded-lg z-50">
-                        <h3 className="text-lg font-semibold">{hoveredItem.name}</h3>
-                        <p>Type: {hoveredItem.type}</p>
-                        <p>Availability: {hoveredItem.month.north.join(", ")}</p>
-                        <p>Active Time: {hoveredItem.time_of_day.join(" - ")}</p>
-                    </div>
-                )}
-
-                {filter.timed ? 
-                    <div>
-                        <h2 className="text-white">Items available at this time</h2>
-                        {
-                            timedItems.map((item: any, index: number) => {
-                                return (
-                                    <button 
-                                        key={index} 
-                                        onClick={() => selectItem(item)}
-                                        onMouseEnter={() => handleMouseEnter(item)}
-                                        className="transition-transform duration-200 ease-in-out hover:scale-125"
-                                        >
-                                        <img
-                                            src={item.icon}
-                                            alt={item.name}
-
-                                            width={30}
-                                            height={30}
-                                        />
-                                    </button>
-                                )
-                            })
+                        {isOpen ? 
+                            <div className="space-y-2">
+                                <div className="py-1">
+                                    {Object.keys(filter).map((value, index) => (
+                                        <label key={index} className="flex items-center space-x-2">
+                                            <input 
+                                                type="checkbox"
+                                                checked={filter[value as keyof typeof filter]}
+                                                onChange={() => setFilter((prev) => ({
+                                                    ...prev, 
+                                                    [value]: !prev[value as keyof typeof filter]
+                                                }))} 
+                                                className="mr-2"
+                                            />
+                                            {value}
+                                            {/* {key.charAt(0).toUpperCase() + key.slice(1)} */}
+                                        </label>
+                                    ))}
+                                </div>
+                            </div> : ''
                         }
-                    </div> : ""
-                }
-                
+                    </div>
 
-                {filter.bugs ? 
-                        <div>
-                            <h2 className="text-white">Bugs</h2>
+                    <div>
+                        {currentTime ? 
+                            <div>
+                                <h4 className="text-white">{`Current Time: ${currentTime?.hour}:${currentTime?.minute}:${currentTime?.seconds}`}</h4>
+                                <h4 className="text-white">{`Month: ${currentTime.month}`}</h4>
+                            </div> 
+                            : 
+                            ""
+                        }
+                    </div>
+
+                    {/* Display enlarged info box when hovering */}
+                    {hoveredItem && setHoveredItemInformation()}
+
+                    <div className="inset-0 flex flex-wrap items-center justify-center bg-black bg-opacity-50 z-50 p-3 max-h-200 rounded-lg">
+                    {filter.timed ? 
+                        <div className="flex flex-wrap justify-baseline mt-5">
+                            <h2 className="text-white align-text-top">Timed Items</h2>
                             {
-                                bugs.map((item: any, index: number) => {
+                                timedItems.map((item: any, index: number) => {
                                     return (
                                         <button 
                                             key={index} 
-                                            onClick={() => selectItem(item)}
-                                            onMouseEnter={() => handleMouseEnter(item)}
+                                            onClick={() => clickOnItem(item)}
+                                            className="transition-transform duration-200 ease-in-out hover:scale-125"
                                             >
                                             <img
                                                 src={item.icon}
                                                 alt={item.name}
 
-                                                width={30}
-                                                height={30}
+                                                width={iconDimensions.width}
+                                                height={iconDimensions.height}
                                             />
                                         </button>
                                     )
                                 })
                             }
-                        </div>
-                        :  ''
-                }
+                        </div> : ""
+                    }
                 
 
-                {filter.fish ? 
-                    <div>
-                        <h2 className="text-white">Fish</h2>
-                        {
-                            fish.map((item: any, index: number) => {
-                                return (
-                                    <button 
-                                            key={index} 
-                                            onClick={() => selectItem(item)}
-                                            onMouseEnter={() => handleMouseEnter(item)}
-                                        >
-                                        <img
-                                            src={item.icon}
-                                            alt={item.name}
-
-                                            width={30}
-                                            height={30}
-                                        />
-                                    </button>
-                                )
-                            })
-                        }
-                    </div> : ''
-                }
-                
-                {filter.seaCreatures ? 
-                    <div>
-                        <h2 className="text-white">Sea Creatures</h2>
-                        {
-                            seaCreatures.map((item: any, index: number) => {
-                                return (
-                                    <button 
-                                            key={index} 
-                                            onClick={() => selectItem(item)}
-                                            onMouseEnter={() => handleMouseEnter(item)}
-                                        >
-                                        <img
-                                            src={item.icon}
-                                            alt={item.name}
-    
-                                            width={30}
-                                            height={30}
-                                        />
-                                    </button>
-                                )
-                            })
-                        }
-                    </div> : ''
-                }
-
-                {filter.uncatagorized ? 
-                    <div>
-                        {uncatagorized ? <h2>Nothing in Uncategorized at this time...</h2> : 
-                            <div>
-                                <h2 className="text-white">Uncagegorized</h2>
+                    {filter.bugs ? 
+                            <div className="flex flex-wrap justify-baseline mt-5">
+                                <h2 className="text-white align-text-top">Bugs</h2>
                                 {
-                                    seaCreatures.map((item: any, index: number) => {
+                                    bugs.map((item: any, index: number) => {
                                         return (
                                             <button 
                                                 key={index} 
-                                                onClick={() => selectItem(item)}
-                                                onMouseEnter={() => handleMouseEnter(item)}
-                                            >
+                                                onClick={() => clickOnItem(item)}
+                                                className="transition-transform duration-200 ease-in-out hover:scale-125"
+                                                >
                                                 <img
                                                     src={item.icon}
                                                     alt={item.name}
-            
-                                                    width={30}
-                                                    height={30}
+
+                                                    width={iconDimensions.width}
+                                                    height={iconDimensions.height}
                                                 />
                                             </button>
                                         )
                                     })
                                 }
                             </div>
-                        }
-                    </div> : ''
-                }
+                            :  ''
+                    }
+                    
 
-                {filter.total ? 
-                    <div>
-                        <h2 className="text-white">Total</h2>
-                        {
-                            total.map((item: any, index: number) => {
-                                return (
-                                    <button 
+                    {filter.fish ? 
+                        <div className="flex flex-wrap justify-baseline mt-5">
+                            <h2 className="text-white align-text-top">Fish</h2>
+                            {
+                                fish.map((item: any, index: number) => {
+                                    return (
+                                        <button 
+                                                key={index} 
+                                                onClick={() => clickOnItem(item)}
+                                                className="transition-transform duration-200 ease-in-out hover:scale-125"
+                                            >
+                                            <img
+                                                src={item.icon}
+                                                alt={item.name}
+
+                                                width={iconDimensions.width}
+                                                height={iconDimensions.height}
+                                            />
+                                        </button>
+                                    )
+                                })
+                            }
+                        </div> : ''
+                    }
+                    
+                    {filter.seaCreatures ? 
+                        <div className="flex flex-wrap left-0 mt-5">
+                            <h2 className="text-white align-text-top">Sea Creatures</h2>
+                            {
+                                seaCreatures.map((item: any, index: number) => {
+                                    return (
+                                        <button 
+                                                key={index} 
+                                                onClick={() => clickOnItem(item)}
+                                                className="transition-transform duration-200 ease-in-out hover:scale-125"
+                                            >
+                                            <img
+                                                src={item.icon}
+                                                alt={item.name}
+        
+                                                width={iconDimensions.width}
+                                                height={iconDimensions.height}
+                                            />
+                                        </button>
+                                    )
+                                })
+                            }
+                        </div> : ''
+                    }
+
+                    {filter.uncatagorized ? 
+                        <div className="flex flex-wrap justify-baseline mt-5">
+                            {uncatagorized ? <h2>Nothing in Uncategorized at this time...</h2> : 
+                                <div>
+                                    <h2 className="text-white align-text-top">Uncagegorized</h2>
+                                    {
+                                        seaCreatures.map((item: any, index: number) => {
+                                            return (
+                                                <button 
+                                                    key={index} 
+                                                    onClick={() => clickOnItem(item)}
+                                                    className="transition-transform duration-200 ease-in-out hover:scale-125"
+                                                >
+                                                    <img
+                                                        src={item.icon}
+                                                        alt={item.name}
+                
+                                                        width={iconDimensions.width}
+                                                        height={iconDimensions.height}
+                                                    />
+                                                </button>
+                                            )
+                                        })
+                                    }
+                                </div>
+                            }
+                        </div> : ''
+                    }
+
+                    {filter.total ? 
+                        <div className="flex flex-wrap justify-baseline mt-5">
+                            <h2 className="text-white align-text-top">Total</h2>
+                            {
+                                total.map((item: any, index: number) => {
+                                    return (
+                                        <button 
+                                                key={index} 
+                                                onClick={() => clickOnItem(item)}
+                                                className="transition-transform duration-200 ease-in-out hover:scale-125"
+                                            >
+                                            <img
+                                                src={item.icon}
+                                                alt={item.name}
+
+                                                width={iconDimensions.width}
+                                                height={iconDimensions.height}
+                                            />
+                                        </button>
+                                    )
+                                })
+                            }
+                        </div> : ''
+                    }
+
+                    {filter.selectedItems ?  
+                        <div className="flex flex-wrap justify-baseline mt-5">
+                            <h2 className="text-white">Selected</h2>
+                            {
+                                selectedItems.map((item: any, index: number) => {
+                                    return (
+                                        <button 
                                             key={index} 
-                                            onClick={() => selectItem(item)}
-                                            onMouseEnter={() => handleMouseEnter(item)}
-                                        >
-                                        <img
-                                            src={item.icon}
-                                            alt={item.name}
+                                            onClick={() => selectAlreadySelected(item)}
+                                            className="transition-transform duration-200 ease-in-out hover:scale-125"
+                                            >
+                                            <img
+                                                src={item.icon}
+                                                alt={item.name}
 
-                                            width={30}
-                                            height={30}
-                                        />
-                                    </button>
-                                )
-                            })
-                        }
-                    </div> : ''
-                }
+                                                width={iconDimensions.width}
+                                                height={iconDimensions.height}
+                                            />
+                                        </button>
+                                    )
+                                })
+                            }
+                        </div> : ''
+                    }
 
-                {filter.selectedItems ?  
-                    <div>
-                        <h2 className="text-white">Selected</h2>
-                        {
-                            selectedItems.map((item: any, index: number) => {
-                                return (
-                                    <button 
-                                        key={index} 
-                                        onClick={() => selectAlreadySelected(item)}
-                                        onMouseEnter={() => handleMouseEnter(item)}
-                                        >
-                                        <img
-                                            src={item.icon}
-                                            alt={item.name}
-
-                                            width={30}
-                                            height={30}
-                                        />
-                                    </button>
-                                )
-                            })
-                        }
-                    </div> : ''
-                }
-               
+                </div>
 
                 <div>
-                    <button onClick={() => saveItems()}>Save</button>
-                    <button onClick={() => logSelectedItems()}>log</button>
-                    <button onClick={() => remove_data()}>Clear Data</button>
+                    <button className=" bg-blue-100 rounded-lg p-2 shadow-lg m-2" onClick={() => saveItems()}>Save</button>
+                    <button className=" bg-blue-50 rounded-lg p-2 shadow-lg m-2" onClick={() => logSelectedItems()}>log</button>
+                    <button className=" bg-blue-50 rounded-lg p-2 shadow-lg m-2" onClick={() => remove_data()}>Clear Data</button>
                 </div>
             </div>}
         </div>
