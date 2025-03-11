@@ -201,9 +201,11 @@ export default function DisplayIcons() {
         };
     }, [total, currentTime]);//Oly recreates if total or currentTime changes
 
+    // Function formats all selected Items data to be easier to read and understand. Adds month names, standard time, and weather information
     const setHoveredItemInformation = () => {
-        const containerClass = 'fixed bottom-10 left-1/2 transform -translate-x-1/2 bg-white p-4 shadow-lg rounded-lg z-50 w-2xl';
+        const containerClass = 'fixed flex flex-wrap flex-col bottom-10 left-1/2 transform -translate-x-1/2 bg-white p-4 shadow-lg rounded-lg z-50 w-2xl';
         const fontClass = "text-lg font-semibold";
+        const subFontClass = "text-blue-950";
 
         const setMonths = (months: number[]) => {
             if(months){
@@ -256,17 +258,30 @@ export default function DisplayIcons() {
             return retTime
         }
 
+        const setWeather = (weather: number | undefined) => {
+
+            if (weather == 1){
+                return 'All weather except rain'
+            } else if (weather == 2){
+                return "Only when raining"
+            } else {
+                return "Any Weather"
+            }
+        }
+
         const adapTime = setTime(hoveredItem?.time_of_day)
+        const weather = setWeather(hoveredItem?.weather)
 
         if (hoveredItem?.type == 1){
             return (
                 <div className={containerClass}>
                     <img src={hoveredItem.icon} alt={hoveredItem.name} width={35} height={35}></img>
                     <h3 className={fontClass}>{hoveredItem.name}</h3>
-                    <p>Type: {"Bug"}</p>
-                    <p>Availability: {setMonths(hoveredItem.month.north)}</p>
-                    <p>Active Time: {adapTime.join(" - ")}</p>
-                    <p>Found: {hoveredItem.bugLocation}</p>
+                    <p>Type: <span className={subFontClass}>{"Bug"}</span></p>
+                    <p>Availability: <span className={subFontClass}>{setMonths(hoveredItem.month.north)}</span></p>
+                    <p>Weather: <span className={subFontClass}>{weather}</span></p>
+                    <p>Active Time: <span className={subFontClass}>{adapTime.join(" - ")}</span></p>
+                    <p>Found: <span className={subFontClass}>{hoveredItem.bugLocation}</span></p>
                 </div>
             )
         } else if (hoveredItem?.type == 2){
@@ -274,10 +289,11 @@ export default function DisplayIcons() {
                 <div className={containerClass}>
                     <img src={hoveredItem.icon} alt={hoveredItem.name} width={35} height={35}></img>
                     <h3 className={fontClass}>{hoveredItem.name}</h3>
-                    <p>Type: {"Fish"}</p>
-                    <p>Availability: {setMonths(hoveredItem.month.north)}</p>
-                    <p>Active Time: {adapTime.join(" - ")}</p>
-                    <p>Found: {hoveredItem.fishLocation}</p>
+                    <p>Type: <span className={subFontClass}>{"Fish"}</span></p>
+                    <p>Availability: <span className={subFontClass}>{setMonths(hoveredItem.month.north)}</span></p>
+                    <p>Weather: <span className={subFontClass}>{weather}</span></p>
+                    <p>Active Time: <span className={subFontClass}>{adapTime.join(" - ")}</span></p>
+                    <p>Found: <span className={subFontClass}>{hoveredItem.fishLocation}</span></p>
                 </div>
             )
         } else if (hoveredItem?.type == 3){
@@ -285,19 +301,15 @@ export default function DisplayIcons() {
                 <div className={containerClass}>
                     <img src={hoveredItem.icon} alt={hoveredItem.name} width={35} height={35}></img>
                     <h3 className={fontClass}>{hoveredItem.name}</h3>
-                    <p>Type: {"Sea Creature"}</p>
-                    <p>Availability: {setMonths(hoveredItem.month.north)}</p>
-                    <p>Active Time: {adapTime.join(" - ")}</p>
-                    <p>Sea Creature Shadow Size: {hoveredItem.seaCreatureShadowSize}</p>
-                    <p>Sea Creature Shadow Movement: {hoveredItem.seaCreatureShadowMoveMent}</p>
+                    <p>Type: <span className={subFontClass}>{"Sea Creature"}</span></p>
+                    <p>Availability: <span className={subFontClass}>{setMonths(hoveredItem.month.north)}</span></p>
+                    <p>Active Time: <span className={subFontClass}>{adapTime.join(" - ")}</span></p>
+                    <p>Sea Creature Shadow Size: <span className={subFontClass}>{hoveredItem.seaCreatureShadowSize}</span></p>
+                    <p>Sea Creature Shadow Movement: <span className={subFontClass}>{hoveredItem.seaCreatureShadowMoveMent}</span></p>
                 </div>
             )
         }
     }
-    
-    // const handleMouseLeave = () => {
-    //     setHoveredItem(null);
-    // };
 
     // set loading to true on start and once data is in then set loading to false
     useEffect(() => {
@@ -582,6 +594,25 @@ export default function DisplayIcons() {
                     <button className=" bg-blue-100 rounded-lg p-2 shadow-lg m-2" onClick={() => saveItems()}>Save</button>
                     <button className=" bg-blue-50 rounded-lg p-2 shadow-lg m-2" onClick={() => logSelectedItems()}>log</button>
                     <button className=" bg-blue-50 rounded-lg p-2 shadow-lg m-2" onClick={() => remove_data()}>Clear Data</button>
+                </div>
+
+                <div>
+                    <label>Icon Width: </label>
+                    <input value={iconDimensions.width} onChange={(e) => {
+                        const {name, value} = e.target
+                        setIconDimensions({
+                            ...iconDimensions,
+                            [name]: value
+                        })
+                    }}></input>
+                    <label>Icon height: </label>
+                    <input value={iconDimensions.height} onChange={(e) => {
+                        const {name, value} = e.target
+                        setIconDimensions({
+                            ...iconDimensions,
+                            [name]: value
+                        })
+                    }}></input>
                 </div>
             </div>}
         </div>
