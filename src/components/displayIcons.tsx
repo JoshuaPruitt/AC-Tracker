@@ -5,6 +5,7 @@ import { Acnh_data_interface } from "../interfaces/acnh-data-interface.js";
 import { acnh_data } from "../data/acnh-data.js";
 
 import { FilterComponent } from "./filtersComponent.js";
+import { ClickItem } from "./selectedItemComp.js";
 
 
 import { getTimeDataIp } from '../api/timeData.js';
@@ -13,10 +14,9 @@ import Time from "../interfaces/time-interface.js";
 
 export default function DisplayIcons() {
     const {filter, filterHtml} = FilterComponent();
+    const {clickedItem, setClickedItem, setClickedItemInformation} = ClickItem();
 
     const [iconDimensions, setIconDimensions] = useState<number>(40)
-
-    const [hoveredItem, setHoveredItem] = useState<Acnh_data_interface | null>(null);
     const [clickedOnOnce, setClickedOn] = useState<boolean>(false);
 
     const filePaths: Acnh_data_interface[] = acnh_data;
@@ -156,14 +156,14 @@ export default function DisplayIcons() {
 
     const clickOnItem = (item: Acnh_data_interface) => {
         if(!clickedOnOnce){
-            setHoveredItem(item)
+            setClickedItem(item)
             setClickedOn(true)
-        } else if (clickedOnOnce && item == hoveredItem){
-            setHoveredItem(null)
+        } else if (clickedOnOnce && item == clickedItem){
+            setClickedItem(null)
             selectItem(item)
             setClickedOn(false)
-        } else if (clickedOnOnce && item != hoveredItem){
-            setHoveredItem(item)
+        } else if (clickedOnOnce && item != clickedItem){
+            setClickedItem(item)
         }
     }
 
@@ -191,115 +191,6 @@ export default function DisplayIcons() {
         };
     }, [total, currentTime]);//Oly recreates if total or currentTime changes
 
-    // Function formats all selected Items data to be easier to read and understand. Adds month names, standard time, and weather information
-    const setHoveredItemInformation = () => {
-        const containerClass = 'fixed flex flex-wrap flex-col bottom-10 left-1/2 transform -translate-x-1/2 bg-white p-4 shadow-lg rounded-lg z-50 w-2xl';
-        const fontClass = "text-lg font-semibold";
-        const subFontClass = "text-blue-950";
-
-        const setMonths = (months: number[]) => {
-            if(months){
-                let monthsActive: string = ''
-                for(let i = 0; i < months.length; i++){
-                    if(months[i] == 1 && i == 0){
-                        monthsActive += " January,"
-                    } else if(months[i] == 1 && i == 1){
-                        monthsActive += " Febuary,"
-                    } else if(months[i] == 1 && i == 2){
-                        monthsActive += " March,"
-                    } else if(months[i] == 1 && i == 3){
-                        monthsActive += " April,"
-                    } else if(months[i] == 1 && i == 4){
-                        monthsActive += " May,"
-                    } else if(months[i] == 1 && i == 5){
-                        monthsActive += " June,"
-                    }  else if(months[i] == 1 && i == 6){
-                        monthsActive += " July,"
-                    } else if(months[i] == 1 && i == 7){
-                        monthsActive += " August,"
-                    } else if(months[i] == 1 && i == 8){
-                        monthsActive += " September,"
-                    } else if(months[i] == 1 && i == 9){
-                        monthsActive += " October,"
-                    } else if(months[i] == 1 && i == 10){
-                        monthsActive += " November,"
-                    } else if(months[i] == 1 && i == 11){
-                        monthsActive += " December"
-                    }
-                } 
-                return monthsActive
-            }
-        };
-
-        const setTime = (time: number[] | undefined) => {
-            const retTime: string[] = [];
-
-            if(!time){
-                return ['', '']
-            }
-
-            for(let i = 0; i < time.length; i++){
-                if(time[i] > 12){
-                    retTime[i] = `${time[i] - 12}pm` 
-                } else if(time[i] < 12){
-                    retTime[i] = `${time[i]}am`
-                }
-            }
-            return retTime
-        }
-
-        const setWeather = (weather: number | undefined) => {
-
-            if (weather == 1){
-                return 'All weather except rain'
-            } else if (weather == 2){
-                return "Only when raining"
-            } else {
-                return "Any Weather"
-            }
-        }
-
-        const adapTime = setTime(hoveredItem?.time_of_day)
-        const weather = setWeather(hoveredItem?.weather)
-
-        if (hoveredItem?.type == 1){
-            return (
-                <div className={containerClass}>
-                    <img src={hoveredItem.icon} alt={hoveredItem.name} width={iconDimensions} height={iconDimensions}></img>
-                    <h3 className={fontClass}>{hoveredItem.name}</h3>
-                    <p>Type: <span className={subFontClass}>{"Bug"}</span></p>
-                    <p>Availability: <span className={subFontClass}>{setMonths(hoveredItem.month.north)}</span></p>
-                    <p>Weather: <span className={subFontClass}>{weather}</span></p>
-                    <p>Active Time: <span className={subFontClass}>{adapTime.join(" - ")}</span></p>
-                    <p>Found: <span className={subFontClass}>{hoveredItem.bugLocation}</span></p>
-                </div>
-            )
-        } else if (hoveredItem?.type == 2){
-            return (
-                <div className={containerClass}>
-                    <img src={hoveredItem.icon} alt={hoveredItem.name} width={iconDimensions} height={iconDimensions}></img>
-                    <h3 className={fontClass}>{hoveredItem.name}</h3>
-                    <p>Type: <span className={subFontClass}>{"Fish"}</span></p>
-                    <p>Availability: <span className={subFontClass}>{setMonths(hoveredItem.month.north)}</span></p>
-                    <p>Weather: <span className={subFontClass}>{weather}</span></p>
-                    <p>Active Time: <span className={subFontClass}>{adapTime.join(" - ")}</span></p>
-                    <p>Found: <span className={subFontClass}>{hoveredItem.fishLocation}</span></p>
-                </div>
-            )
-        } else if (hoveredItem?.type == 3){
-            return (
-                <div className={containerClass}>
-                    <img src={hoveredItem.icon} alt={hoveredItem.name} width={iconDimensions} height={iconDimensions}></img>
-                    <h3 className={fontClass}>{hoveredItem.name}</h3>
-                    <p>Type: <span className={subFontClass}>{"Sea Creature"}</span></p>
-                    <p>Availability: <span className={subFontClass}>{setMonths(hoveredItem.month.north)}</span></p>
-                    <p>Active Time: <span className={subFontClass}>{adapTime.join(" - ")}</span></p>
-                    <p>Sea Creature Shadow Size: <span className={subFontClass}>{hoveredItem.seaCreatureShadowSize}</span></p>
-                    <p>Sea Creature Shadow Movement: <span className={subFontClass}>{hoveredItem.seaCreatureShadowMoveMent}</span></p>
-                </div>
-            )
-        }
-    }
 
     // set loading to true on start and once data is in then set loading to false
     useEffect(() => {
@@ -347,7 +238,7 @@ export default function DisplayIcons() {
     return (
         <div>
             {loading ? <h2>Loading...</h2> : 
-                <div onMouseLeave={() => setHoveredItem(null)}>
+                <div onMouseLeave={() => setClickedItem(null)}>
                     {filterHtml()}
 
                     <div>
@@ -362,7 +253,7 @@ export default function DisplayIcons() {
                     </div>
 
                     {/* Display enlarged info box when hovering */}
-                    {hoveredItem && setHoveredItemInformation()}
+                    {clickedItem && setClickedItemInformation()}
 
                     <div className="inset-0 flex flex-wrap items-center justify-center bg-white dark:bg-black bg-opacity-50 z-50 p-3 max-h-200 rounded-lg" >
                     {filter.timed ? 
