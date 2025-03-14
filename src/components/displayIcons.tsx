@@ -6,17 +6,16 @@ import { acnh_data } from "../data/acnh-data.js";
 
 import { FilterComponent } from "./filtersComponent.js";
 import { ClickItem } from "./selectedItemComp.js";
-
+import { SettingsComponent } from "./settingsComp.js";
 
 import { getTimeDataIp } from '../api/timeData.js';
 import Time from "../interfaces/time-interface.js";
 
-
 export default function DisplayIcons() {
     const {filter, filterHtml} = FilterComponent();
+    const {settings, settingsDropDown} = SettingsComponent();
     const {clickedItem, setClickedItem, setClickedItemInformation} = ClickItem();
 
-    const [iconDimensions, setIconDimensions] = useState<number>(40)
     const [clickedOnOnce, setClickedOn] = useState<boolean>(false);
 
     const filePaths: Acnh_data_interface[] = acnh_data;
@@ -119,7 +118,7 @@ export default function DisplayIcons() {
             if (!prevSelected.some((i) => i.name === item.name)) {
                 return [...prevSelected, item];
             } else {
-                console.log("Duplicate", prevSelected)
+                // console.log("Duplicate", prevSelected)
                 return prevSelected; // Return unchanged if it's a duplicate
             }
             
@@ -143,7 +142,7 @@ export default function DisplayIcons() {
             if (!prevSelected.some((i) => i.name === item.name)) {
                 return [...prevSelected, item];
             } else {
-                console.log("Duplicate", prevSelected)
+                // console.log("Duplicate", prevSelected)
                 return prevSelected; // Return unchanged if it's a duplicate
             }
             
@@ -211,8 +210,8 @@ export default function DisplayIcons() {
     }, [addData]);
 
     useEffect(() => {
-        console.log("total:", total)
-        console.log("selected Items:", selectedItems)
+        // console.log("total:", total)
+        // console.log("selected Items:", selectedItems)
 
         setItems() // set the items
         
@@ -231,21 +230,25 @@ export default function DisplayIcons() {
         setTimedItems(uniqueTimedItems)
     }, [uniqueTimedItems]);
 
-    useEffect(() => {
-        console.log(filter)
-    }, [filter])
+    // useEffect(() => {
+    //     console.log(filter)
+    // }, [filter])
 
     return (
         <div>
             {loading ? <h2>Loading...</h2> : 
                 <div onMouseLeave={() => setClickedItem(null)}>
-                    {filterHtml()}
+                    <div className="flex justify-between">
+                        {filterHtml()}
+                        {settingsDropDown()}
+                    </div>
+                    
 
                     <div>
                         {currentTime ? 
                             <div>
-                                <h4 className="text-white">{`Current Time: ${currentTime?.hour}:${currentTime?.minute}:${currentTime?.seconds}`}</h4>
-                                <h4 className="text-white">{`Month: ${currentTime.month}`}</h4>
+                                <h4 className="text-black dark:text-white">{`Current Time: ${currentTime?.hour}:${currentTime?.minute}:${currentTime?.seconds}`}</h4>
+                                <h4 className="text-black dark:text-white">{`Month: ${currentTime.month}`}</h4>
                             </div> 
                             : 
                             ""
@@ -255,7 +258,7 @@ export default function DisplayIcons() {
                     {/* Display enlarged info box when hovering */}
                     {clickedItem && setClickedItemInformation()}
 
-                    <div className="inset-0 flex flex-wrap items-center justify-center bg-white dark:bg-black bg-opacity-50 z-50 p-3 max-h-200 rounded-lg" >
+                    <div className="inset-0 flex flex-wrap items-center justify-center bg-white dark:bg-black bg-opacity-50 z-50 p-3 max-h-200 rounded-lg shadow-lg" >
                     {filter.timed ? 
                         <div className="flex flex-wrap justify-baseline mt-5">
                             <h2 className="text-black dark:text-white align-text-top">Timed Items</h2>
@@ -271,8 +274,8 @@ export default function DisplayIcons() {
                                                 src={item.icon}
                                                 alt={item.name}
 
-                                                width={iconDimensions}
-                                                height={iconDimensions}
+                                                width={settings.iconSize}
+                                                height={settings.iconSize}
                                             />
                                         </button>
                                     )
@@ -297,8 +300,8 @@ export default function DisplayIcons() {
                                                     src={item.icon}
                                                     alt={item.name}
 
-                                                    width={iconDimensions}
-                                                    height={iconDimensions}
+                                                    width={settings.iconSize}
+                                                    height={settings.iconSize}
                                                 />
                                             </button>
                                         )
@@ -324,8 +327,8 @@ export default function DisplayIcons() {
                                                 src={item.icon}
                                                 alt={item.name}
 
-                                                width={iconDimensions}
-                                                height={iconDimensions}
+                                                width={settings.iconSize}
+                                                height={settings.iconSize}
                                             />
                                         </button>
                                     )
@@ -349,8 +352,8 @@ export default function DisplayIcons() {
                                                 src={item.icon}
                                                 alt={item.name}
         
-                                                width={iconDimensions}
-                                                height={iconDimensions}
+                                                width={settings.iconSize}
+                                                height={settings.iconSize}
                                             />
                                         </button>
                                     )
@@ -376,8 +379,8 @@ export default function DisplayIcons() {
                                                         src={item.icon}
                                                         alt={item.name}
                 
-                                                        width={iconDimensions}
-                                                        height={iconDimensions}
+                                                        width={settings.iconSize}
+                                                        height={settings.iconSize}
                                                     />
                                                 </button>
                                             )
@@ -403,8 +406,8 @@ export default function DisplayIcons() {
                                                 src={item.icon}
                                                 alt={item.name}
 
-                                                width={iconDimensions}
-                                                height={iconDimensions}
+                                                width={settings.iconSize}
+                                                height={settings.iconSize}
                                             />
                                         </button>
                                     )
@@ -428,8 +431,8 @@ export default function DisplayIcons() {
                                                 src={item.icon}
                                                 alt={item.name}
 
-                                                width={iconDimensions}
-                                                height={iconDimensions}
+                                                width={settings.iconSize}
+                                                height={settings.iconSize}
                                             />
                                         </button>
                                     )
@@ -446,13 +449,6 @@ export default function DisplayIcons() {
                     <button className=" bg-blue-50 rounded-lg p-2 shadow-lg m-2" onClick={() => remove_data()}>Clear Data</button>
                 </div>
 
-                <div>
-                    <label>Icon Size: </label>
-                    <input value={iconDimensions || ''} onChange={(e) => {
-                        const {value} = e.target
-                        setIconDimensions(Number(value))
-                    }}></input>
-                </div>
             </div>}
         </div>
     )

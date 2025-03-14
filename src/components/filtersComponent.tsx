@@ -16,7 +16,7 @@ export const FilterComponent = () => {
 
     const filterHtml = () => {
         return (
-        <div className=" bg-white dark:bg-purple-950 rounded-lg p-4 w-1/3 shadow-lg max-w-50">
+        <div className=" bg-white dark:bg-purple-950 rounded-lg p-4 w-1/3 shadow-lg max-w-50 static">
             <div className='flex justify-between' onClick={() => setIsOpen(!isOpen)}>
                 <button 
                     type="button" 
