@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { IoIosArrowDown } from "react-icons/io";
 import { useMemo, useCallback, useEffect, useState } from "react";
 import { get_data, save_data, remove_data } from "./localStorage.js";
 import { Acnh_data_interface } from "../interfaces/acnh-data-interface.js";
 import { acnh_data } from "../data/acnh-data.js";
+
+import { FilterComponent } from "./filtersComponent.js";
 
 
 import { getTimeDataIp } from '../api/timeData.js';
@@ -11,21 +12,12 @@ import Time from "../interfaces/time-interface.js";
 
 
 export default function DisplayIcons() {
-    const [filter, setFilter] = useState({
-        timed: true,
-        bugs: true,
-        fish: true,
-        seaCreatures: true,
-        total: false,
-        uncatagorized: false,
-        selectedItems: false
-    });
+    const {filter, filterHtml} = FilterComponent();
 
     const [iconDimensions, setIconDimensions] = useState<number>(40)
 
     const [hoveredItem, setHoveredItem] = useState<Acnh_data_interface | null>(null);
     const [clickedOnOnce, setClickedOn] = useState<boolean>(false);
-    const [isOpen, setIsOpen] = useState(false)
 
     const filePaths: Acnh_data_interface[] = acnh_data;
     const [loading, setLoading] = useState<boolean>(true);
@@ -356,43 +348,7 @@ export default function DisplayIcons() {
         <div>
             {loading ? <h2>Loading...</h2> : 
                 <div onMouseLeave={() => setHoveredItem(null)}>
-                    <div className=" bg-white dark:bg-purple-950 rounded-lg p-4 w-1/3 shadow-lg max-w-50">
-                        <div className='flex justify-between' onClick={() => setIsOpen(!isOpen)}>
-                            <button 
-                                type="button" 
-                                className="text-gray-600 hover:text-gray-800 dark:text-white flex justify-center" 
-                                id="menu-button"
-                                onClick={() => setIsOpen(!isOpen)}
-                            >
-                                Filters
-                            </button>
-
-                            <IoIosArrowDown width={30} height={30} className="scale-120 translate-y-1.5"/>
-                        </div>
-                        
-
-                        {isOpen ? 
-                            <div className="space-y-2">
-                                <div className="py-1">
-                                    {Object.keys(filter).map((value, index) => (
-                                        <label key={index} className="flex items-center space-x-2">
-                                            <input 
-                                                type="checkbox"
-                                                checked={filter[value as keyof typeof filter]}
-                                                onChange={() => setFilter((prev) => ({
-                                                    ...prev, 
-                                                    [value]: !prev[value as keyof typeof filter]
-                                                }))} 
-                                                className="mr-2"
-                                            />
-                                            {value}
-                                            {/* {key.charAt(0).toUpperCase() + key.slice(1)} */}
-                                        </label>
-                                    ))}
-                                </div>
-                            </div> : ''
-                        }
-                    </div>
+                    {filterHtml()}
 
                     <div>
                         {currentTime ? 
@@ -411,7 +367,7 @@ export default function DisplayIcons() {
                     <div className="inset-0 flex flex-wrap items-center justify-center bg-white dark:bg-black bg-opacity-50 z-50 p-3 max-h-200 rounded-lg" >
                     {filter.timed ? 
                         <div className="flex flex-wrap justify-baseline mt-5">
-                            <h2 className="text-white align-text-top">Timed Items</h2>
+                            <h2 className="text-black dark:text-white align-text-top">Timed Items</h2>
                             {
                                 timedItems.map((item: any, index: number) => {
                                     return (
@@ -437,7 +393,7 @@ export default function DisplayIcons() {
 
                     {filter.bugs ? 
                             <div className="flex flex-wrap justify-baseline mt-5">
-                                <h2 className="text-white align-text-top">Bugs</h2>
+                                <h2 className="text-black dark:text-white align-text-top">Bugs</h2>
                                 {
                                     bugs.map((item: any, index: number) => {
                                         return (
@@ -464,7 +420,7 @@ export default function DisplayIcons() {
 
                     {filter.fish ? 
                         <div className="flex flex-wrap justify-baseline mt-5">
-                            <h2 className="text-white align-text-top">Fish</h2>
+                            <h2 className="text-black dark:text-white align-text-top">Fish</h2>
                             {
                                 fish.map((item: any, index: number) => {
                                     return (
@@ -489,7 +445,7 @@ export default function DisplayIcons() {
                     
                     {filter.seaCreatures ? 
                         <div className="flex flex-wrap left-0 mt-5">
-                            <h2 className="text-white align-text-top">Sea Creatures</h2>
+                            <h2 className="text-black dark:text-white align-text-top">Sea Creatures</h2>
                             {
                                 seaCreatures.map((item: any, index: number) => {
                                     return (
@@ -516,7 +472,7 @@ export default function DisplayIcons() {
                         <div className="flex flex-wrap justify-baseline mt-5">
                             {uncatagorized ? <h2>Nothing in Uncategorized at this time...</h2> : 
                                 <div>
-                                    <h2 className="text-white align-text-top">Uncagegorized</h2>
+                                    <h2 className="text-black dark:text-white align-text-top">Uncagegorized</h2>
                                     {
                                         seaCreatures.map((item: any, index: number) => {
                                             return (
@@ -543,7 +499,7 @@ export default function DisplayIcons() {
 
                     {filter.total ? 
                         <div className="flex flex-wrap justify-baseline mt-5">
-                            <h2 className="text-white align-text-top">Total</h2>
+                            <h2 className="text-black dark:text-white align-text-top">Total</h2>
                             {
                                 total.map((item: any, index: number) => {
                                     return (
@@ -568,7 +524,7 @@ export default function DisplayIcons() {
 
                     {filter.selectedItems ?  
                         <div className="flex flex-wrap justify-baseline mt-5">
-                            <h2 className="text-white">Selected</h2>
+                            <h2 className="text-black dark:text-white align-text-top">Selected</h2>
                             {
                                 selectedItems.map((item: any, index: number) => {
                                     return (
