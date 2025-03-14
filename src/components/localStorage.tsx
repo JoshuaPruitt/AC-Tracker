@@ -8,7 +8,6 @@ export const is_local_storage = () : boolean => {
     } else {
         return true
     }
-    
 }
 
 // Get the local storage data
@@ -30,4 +29,26 @@ export const save_data = (data: Acnh_data_interface[]) => {
 // remove anything in local storage
 export const remove_data = () => {
     localStorage.clear()
+}
+
+// Save page theme data
+export const save_theme = (data: string | null) => {
+    if(data){
+        localStorage.setItem("theme", JSON.stringify(data))
+    } else {
+        remove_theme()
+    }
+}
+
+// Get page theme data
+export const get_theme = () => {
+    const data: string | null = localStorage.getItem('theme')
+    if(data){
+        console.log(data)
+        return JSON.parse(data)
+    }
+}
+
+export const remove_theme = () => {
+    localStorage.removeItem('theme')
 }

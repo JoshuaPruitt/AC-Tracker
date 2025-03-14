@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { IoIosArrowDown } from "react-icons/io";
 import { useMemo, useCallback, useEffect, useState } from "react";
 import { get_data, save_data, remove_data } from "./localStorage.js";
 import { Acnh_data_interface } from "../interfaces/acnh-data-interface.js";
@@ -355,15 +356,20 @@ export default function DisplayIcons() {
         <div>
             {loading ? <h2>Loading...</h2> : 
                 <div onMouseLeave={() => setHoveredItem(null)}>
-                    <div className=" bg-white rounded-lg p-4 w-1/3 shadow-lg max-w-50">
-                        <button 
-                            type="button" 
-                            className="text-gray-600 hover:text-gray-800" 
-                            id="menu-button"
-                            onClick={() => setIsOpen(!isOpen)}
-                        >
-                            Filters
-                        </button>
+                    <div className=" bg-white dark:bg-purple-950 rounded-lg p-4 w-1/3 shadow-lg max-w-50">
+                        <div className='flex justify-between' onClick={() => setIsOpen(!isOpen)}>
+                            <button 
+                                type="button" 
+                                className="text-gray-600 hover:text-gray-800 dark:text-white flex justify-center" 
+                                id="menu-button"
+                                onClick={() => setIsOpen(!isOpen)}
+                            >
+                                Filters
+                            </button>
+
+                            <IoIosArrowDown width={30} height={30} className="scale-120 translate-y-1.5"/>
+                        </div>
+                        
 
                         {isOpen ? 
                             <div className="space-y-2">
@@ -402,7 +408,7 @@ export default function DisplayIcons() {
                     {/* Display enlarged info box when hovering */}
                     {hoveredItem && setHoveredItemInformation()}
 
-                    <div className="inset-0 flex flex-wrap items-center justify-center bg-black bg-opacity-50 z-50 p-3 max-h-200 rounded-lg" >
+                    <div className="inset-0 flex flex-wrap items-center justify-center bg-white dark:bg-black bg-opacity-50 z-50 p-3 max-h-200 rounded-lg" >
                     {filter.timed ? 
                         <div className="flex flex-wrap justify-baseline mt-5">
                             <h2 className="text-white align-text-top">Timed Items</h2>

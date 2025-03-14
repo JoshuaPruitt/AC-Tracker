@@ -295,7 +295,7 @@ export const acnh_data: Acnh_data_interface[] = [
 
     {
         type : 1,
-        name : "Blue weevil_beetle",
+        name : "Blue weevil beetle",
         icon : Blueweevil_beetleIcon,
         weather: 0,
         month : {
@@ -355,7 +355,7 @@ export const acnh_data: Acnh_data_interface[] = [
 
     {
         type : 1,
-        name : "Citrus long-horned_beetle",
+        name : "Citrus long-horned beetle",
         icon : Citruslonghorned_beetleIcon,
         weather: 1,
         month : {
@@ -505,7 +505,7 @@ export const acnh_data: Acnh_data_interface[] = [
 
     {
         type : 1,
-        name : "Earth-boring dung_beetle",
+        name : "Earth-boring dung beetle",
         icon : Earthboringdung_beetleIcon,
         weather: 0,
         month : {
@@ -625,7 +625,7 @@ export const acnh_data: Acnh_data_interface[] = [
 
     {
         type : 1,
-        name : "Giant water_bug",
+        name : "Giant water bug",
         icon : Giantwater_bugIcon,
         weather: 0,
         month : {
@@ -700,7 +700,7 @@ export const acnh_data: Acnh_data_interface[] = [
 
     {
         type : 1,
-        name : "Great purple_emperor",
+        name : "Great purple emperor",
         icon : Greatpurple_emperorIcon,
         weather: 1,
         month : {
@@ -850,7 +850,7 @@ export const acnh_data: Acnh_data_interface[] = [
 
     {
         type : 1,
-        name : "Madagascan sunset_moth",
+        name : "Madagascan sunset moth",
         icon : Madagascansunset_mothIcon,
         weather: 1,
         month : {
@@ -865,7 +865,7 @@ export const acnh_data: Acnh_data_interface[] = [
 
     {
         type : 1,
-        name : "Man-faced stink_bug",
+        name : "Man-faced stink bug",
         icon : Manfacedstink_bugIcon,
         weather: 1,
         month : {
@@ -1000,7 +1000,7 @@ export const acnh_data: Acnh_data_interface[] = [
 
     {
         type : 1,
-        name : "Paper kite_butterfly",
+        name : "Paper kite butterfly",
         icon : Paperkite_butterflyIcon,
         weather: 1,
         month : {
@@ -1060,7 +1060,7 @@ export const acnh_data: Acnh_data_interface[] = [
 
     {
         type : 1,
-        name : "Queen alexandra's_birdwing",
+        name : "Queen alexandra's birdwing",
         icon : Queenalexandras_birdwingIcon,
         weather: 1,
         month : {
@@ -1090,7 +1090,7 @@ export const acnh_data: Acnh_data_interface[] = [
 
     {
         type : 1,
-        name : "Rajah brooke's_birdwing",
+        name : "Rajah brooke's birdwing",
         icon : Rajahbrookes_birdwingIcon,
         weather: 1,
         month : {
@@ -1150,7 +1150,7 @@ export const acnh_data: Acnh_data_interface[] = [
 
     {
         type : 1,
-        name : "Rosalia batesi_beetle",
+        name : "Rosalia batesi beetle",
         icon : Rosaliabatesi_beetleIcon,
         weather: 1,
         month : {
@@ -1885,7 +1885,7 @@ export const acnh_data: Acnh_data_interface[] = [
 
     {
         type : 2,
-        name : "Great white_shark",
+        name : "Great white shark",
         icon : Greatwhite_sharkIcon,
         weather: 0,
         month : {
@@ -2733,7 +2733,7 @@ export const acnh_data: Acnh_data_interface[] = [
 
     {
         type : 3,
-        name : "Gigas giant_clam",
+        name : "Gigas giant clam",
         icon : Gigasgiant_clamIcon,
         weather: 0,
         month : {
@@ -3053,7 +3053,7 @@ export const acnh_data: Acnh_data_interface[] = [
 
     {
         type : 3,
-        name : "Slate pencil_urchin",
+        name : "Slate pencil urchin",
         icon : Slatepencil_urchinIcon,
         weather: 0,
         month : {
@@ -3117,7 +3117,7 @@ export const acnh_data: Acnh_data_interface[] = [
 
     {
         type : 3,
-        name : "Spotted garden_eel",
+        name : "Spotted garden eel",
         icon : Spottedgarden_eelIcon,
         weather: 0,
         month : {
@@ -3213,7 +3213,7 @@ export const acnh_data: Acnh_data_interface[] = [
 
     {
         type : 3,
-        name : "Venus' flower_basket",
+        name : "Venus' flower basket",
         icon : Venusflower_basketIcon,
         weather: 0,
         month : {
