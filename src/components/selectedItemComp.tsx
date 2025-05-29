@@ -11,43 +11,25 @@ export const ClickItem = () => {
 
     // Function formats all selected Items data to be easier to read and understand. Adds month names, standard time, and weather information
     const setClickedItemInformation = () => {
-        const containerClass = 'fixed flex flex-wrap flex-col bottom-10 left-1/2 transform -translate-x-1/2 bg-white p-4 shadow-lg rounded-lg z-50 w-2xl size-auto';
+        const containerClass = 'fixed flex flex-wrap flex-col bottom-10 left-1/2 transform -translate-x-1/2 bg-white p-4 shadow-lg rounded-lg z-50 w-[90vw] max-w-2xl';
         const fontClass = "text-[clamp(1rem,2vw,2rem)] font-semibold";
         const subFontClass = "text-blue-950";
 
+
         const setMonths = (months: number[]) => {
-            if(months){
-                let monthsActive: string = ''
-                for(let i = 0; i < months.length; i++){
-                    if(months[i] == 1 && i == 0){
-                        monthsActive += " January,"
-                    } else if(months[i] == 1 && i == 1){
-                        monthsActive += " Febuary,"
-                    } else if(months[i] == 1 && i == 2){
-                        monthsActive += " March,"
-                    } else if(months[i] == 1 && i == 3){
-                        monthsActive += " April,"
-                    } else if(months[i] == 1 && i == 4){
-                        monthsActive += " May,"
-                    } else if(months[i] == 1 && i == 5){
-                        monthsActive += " June,"
-                    }  else if(months[i] == 1 && i == 6){
-                        monthsActive += " July,"
-                    } else if(months[i] == 1 && i == 7){
-                        monthsActive += " August,"
-                    } else if(months[i] == 1 && i == 8){
-                        monthsActive += " September,"
-                    } else if(months[i] == 1 && i == 9){
-                        monthsActive += " October,"
-                    } else if(months[i] == 1 && i == 10){
-                        monthsActive += " November,"
-                    } else if(months[i] == 1 && i == 11){
-                        monthsActive += " December"
-                    }
-                } 
-                return monthsActive
-            }
+            const monthNames = [
+                "January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"
+            ];
+
+            if (!months) return "";
+
+            return months
+                .map((val, i) => (val === 1 ? monthNames[i] : null))
+                .filter(Boolean)
+                .join(", ");
         };
+
 
         const setTime = (time: number[] | undefined) => {
             const retTime: string[] = [];
