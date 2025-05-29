@@ -19,6 +19,7 @@ export default function DisplayIcons() {
     const [clickedOnOnce, setClickedOn] = useState<boolean>(false);
 
     const filePaths: Acnh_data_interface[] = acnh_data;
+    const skipLoad : boolean = false // used to skip loading screen
     const [loading, setLoading] = useState<boolean>(true);
 
     const [total, setTotal] = useState<Acnh_data_interface[]>([]); // all items
@@ -219,7 +220,11 @@ export default function DisplayIcons() {
 
     // remove total duplicates once the component has finished loading
     useEffect(() => {
-        setLoading(true);
+        if (skipLoad){
+            setLoading(false);
+        } else {
+            setLoading(true);
+        }
         pullStorage()
         removeTotalDup()
     
