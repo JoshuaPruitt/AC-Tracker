@@ -11,6 +11,7 @@ import { SettingsComponent } from "./settingsComp.js";
 import { getTimeDataIp } from '../api/timeData.js';
 import Time from "../interfaces/time-interface.js";
 
+
 export default function DisplayIcons() {
     const {filter, filterHtml} = FilterComponent();
     const {settings, settingsDropDown} = SettingsComponent();
@@ -198,7 +199,7 @@ export default function DisplayIcons() {
             const dataFunc = async () => {
                 const timeData = await getTimeDataIp() // grab time data
                 setCurrentTime(timeData) // set time data
-
+                
                 addData() // grab total data
                 stopLoading() // stop loading state
             }
@@ -263,7 +264,7 @@ export default function DisplayIcons() {
                     {/* Display enlarged info box when hovering */}
                     {clickedItem && setClickedItemInformation()}
 
-                    <div className="inset-0 flex flex-wrap items-center justify-center bg-white dark:bg-black bg-opacity-50 z-50 p-3 max-h-200 rounded-lg shadow-lg" >
+                    <div className="inset-0 flex flex-wrap items-center justify-center bg-white dark:bg-black bg-opacity-50 z-50 p-3 min-h-200 rounded-lg shadow-lg" >
                     {filter.timed ? 
                         <div className="flex flex-wrap justify-baseline mt-5">
                             <h2 className="text-black dark:text-white align-text-top">Timed Items</h2>

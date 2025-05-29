@@ -1,6 +1,9 @@
 import axios from "axios";
 import Time from "../interfaces/time-interface";
 
+import errorTimeData from "../data/error-time-data";
+import { timeDataError } from "../Handlers/error-handler";
+
 const grapIp = async (): Promise<string> => {
     const res = await axios.get('https://api.ipify.org/?format=json');
     // console.log("Ip address:", res.data.ip)
@@ -9,12 +12,21 @@ const grapIp = async (): Promise<string> => {
 }
 
 const fetchData = async (retIp: string | null): Promise<void | Time> => {
-    if (retIp){
-        const requestLink = `https://timeapi.io/api/time/current/ip?ipAddress=${retIp}`;
-        const res = await axios.get(requestLink);
+    if (!retIp){ 
+        return; // If no ip then return
+    }
 
-        // console.log("Time:", res.data);
-        return res.data // return the time data
+    const requestLink = `https://timeapi.io/api/time/current/ip?ipAddress=${retIp}`;
+
+    try {
+
+        const res = await axios.get(requestLink);
+        return res.data;
+    } catch (err){
+
+        console.error('Failed to fetch time data,', err)
+        timeDataError() // send error
+        return errorTimeData;
     }
 }
 

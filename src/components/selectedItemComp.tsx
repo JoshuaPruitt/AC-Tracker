@@ -11,8 +11,8 @@ export const ClickItem = () => {
 
     // Function formats all selected Items data to be easier to read and understand. Adds month names, standard time, and weather information
     const setClickedItemInformation = () => {
-        const containerClass = 'fixed flex flex-wrap flex-col bottom-10 left-1/2 transform -translate-x-1/2 bg-white p-4 shadow-lg rounded-lg z-50 w-2xl';
-        const fontClass = "text-lg font-semibold";
+        const containerClass = 'fixed flex flex-wrap flex-col bottom-10 left-1/2 transform -translate-x-1/2 bg-white p-4 shadow-lg rounded-lg z-50 w-2xl size-auto';
+        const fontClass = "text-[clamp(1rem,2vw,2rem)] font-semibold";
         const subFontClass = "text-blue-950";
 
         const setMonths = (months: number[]) => {
