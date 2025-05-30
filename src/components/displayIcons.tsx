@@ -262,7 +262,7 @@ export default function DisplayIcons() {
                         {currentTime ? 
                             <div>
                                 <h4 className="text-white">{`Current Time: ${currentTime?.hour}:${currentTime?.minute}:${currentTime?.seconds}`}</h4>
-                                <h4 className="text-white">{`Month: ${currentTime.month}`}</h4>
+                                <h4 className="text-white">{`Current Month: ${currentTime.month}`}</h4>
                             </div> 
                             : 
                             ""
@@ -462,9 +462,9 @@ export default function DisplayIcons() {
                 </div>
 
                 <div>
-                    <button className=" bg-zinc-950 text-white rounded-lg p-2 shadow-lg m-2" onClick={() => saveItems()}>Save</button>
-                    <button className=" bg-zinc-950 text-white rounded-lg p-2 shadow-lg m-2" onClick={() => logSelectedItems()}>log</button>
-                    <button className=" bg-zinc-950 text-white rounded-lg p-2 shadow-lg m-2" onClick={() => remove_data()}>Clear Data</button>
+                    <button className="btn bg-zinc-950 text-white rounded-lg p-2 shadow-lg m-2" onClick={() => saveItems()}>Save</button>
+                    <button className="btn bg-zinc-950 text-white rounded-lg p-2 shadow-lg m-2" onClick={() => logSelectedItems()}>log</button>
+                    <button className="btn bg-zinc-950 text-white rounded-lg p-2 shadow-lg m-2" onClick={() => remove_data()}>Clear Data</button>
                 </div>
 
             </div>}

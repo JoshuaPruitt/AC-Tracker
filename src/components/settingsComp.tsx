@@ -10,24 +10,24 @@ export const SettingsComponent = () => {
     const settingsDropDown = () => {
         return (
         <div className=" bg-zinc-950 dark:bg-purple-950 rounded-lg p-4 w-1/3 shadow-lg max-w-50 static">
-            <div className='flex justify-between' onClick={() => setIsOpen(!isSettingsOpen)}>
+            <div className='flex justify-between group' onClick={() => setIsOpen(!isSettingsOpen)}>
                 <button 
                     type="button" 
-                    className="flex justify-between items-center bg-zinc-700 text-white dark:bg-purple-800 rounded-md px-4 py-2 cursor-pointer" 
+                    className="hover:bg-zinc-600 flex justify-between items-center bg-zinc-700 text-white dark:bg-purple-800 rounded-md px-4 py-2 cursor-pointer" 
                     id="menu-button"
                     onClick={() => setIsOpen(!isSettingsOpen)}
                 >
                     Settings
                 </button>
 
-                <IoIosArrowDown width={30} height={30} className="ml-2 w-5 h-5 text-gray-600 dark:text-white"/>
+                <IoIosArrowDown width={30} height={30} className="ml-2 w-5 h-5 text-gray-600 dark:text-white group-hover:text-gray-500"/>
             </div>
             
 
             {isSettingsOpen ? 
                 <div className="absolute mt-2 bg-zinc-950 dark:bg-purple-950 rounded-lg p-4 shadow-lg z-50">
                     <div className="space-y-2">
-                        <div className="py-1">
+                        <div className="py-1 text-white">
                             <label>Icon Size: 
                                 <input value={settings.iconSize || ''} onChange={(e) => {
                                     const {value} = e.target
