@@ -10,6 +10,7 @@ import { SettingsComponent } from "./settingsComp.js";
 
 import { getTimeDataIp } from '../api/timeData.js';
 import Time from "../interfaces/time-interface.js";
+import LoadingDots from "./loadingDots.js";
 
 
 export default function DisplayIcons() {
@@ -255,7 +256,7 @@ export default function DisplayIcons() {
 
     return (
         <div>
-            {loading ? <h2 className="text-white">Loading...</h2> : 
+            {loading ? <h2 className="text-white">{LoadingDots()}</h2> : 
                 <div onMouseLeave={() => setClickedItem(null)}>
                     <div className="flex justify-between">
                         {filterHtml()}
