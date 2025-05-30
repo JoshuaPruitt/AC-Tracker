@@ -6,8 +6,8 @@ function App() {
   // const {isDark, toggleDarkMode} = ChangeTheme();
 
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)] bg-white dark:bg-purple-950">
-      <div className='flex justify-center text-black dark:text-white'>
+    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)] bg-slate-900 dark:bg-purple-950">
+      <div className='flex justify-center text-white'>
           <h1 className='font-bold text-xl'>Animal Crossing Tracker</h1>
       </div>
 

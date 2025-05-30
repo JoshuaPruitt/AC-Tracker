@@ -98,18 +98,21 @@ export default function DisplayIcons() {
             )
         );
     };
- 
-    const uniqueTimedItems = useMemo(() => {
+    
+    // Honestly really confused why this was written. 
+    const uniqueTimedItems: Acnh_data_interface[]= useMemo(() => {
+
         return total.filter(
             (item, index, self) =>
                 index === self.findIndex((i) => i.name === item.name) // Ensure uniqueness
             //find items that starting time is less than the current time and ending time is more than the current time 
         ).filter(item => {
             //if statement prevents items with a starting time of a higher number than the ending time from not being added to current bugs
+            const formMonth: number = currentTime!.month - 1;
             if(item.time_of_day[0] < item.time_of_day[1]){
-                return currentTime && item.time_of_day[0] <= currentTime.hour && item.time_of_day[1] >= currentTime.hour && currentTime.hour && item.month.north[currentTime.month] === 1 //Edit later to be based on hemisphere
+                return currentTime && item.time_of_day[0] <= currentTime.hour && item.time_of_day[1] >= currentTime.hour && currentTime.hour && item.month.north[formMonth] === 1 //Edit later to be based on hemisphere
             } else {
-                return currentTime && item.time_of_day[1] <= currentTime.hour && item.time_of_day[0] >= currentTime.hour && currentTime.hour && item.month.north[currentTime.month] === 1
+                return currentTime && item.time_of_day[1] <= currentTime.hour && item.time_of_day[0] >= currentTime.hour && currentTime.hour && item.month.north[formMonth] === 1
             }
         });
     }, [total, currentTime]);
@@ -180,17 +183,27 @@ export default function DisplayIcons() {
         setSeaCreatures(total.filter((item) => item.type === 3));
         setUncategorized(total.filter((item) => item.type === 0));
 
+        
+
         if (currentTime) {
+            const formMonth: number = currentTime!.month - 1
+
             setTimedItems(total.filter(item => {
                 //if statement prevents items with a starting time of a higher number than the ending time from not being added to current bugs
-                if(item.time_of_day[0] < item.time_of_day[1]){
-                    return currentTime && item.time_of_day[0] <= currentTime.hour && item.time_of_day[1] >= currentTime.hour && item.month.north[currentTime.month] === 1
+                if (item.time_of_day[0] < item.time_of_day[1]){
+                    if (currentTime && item.time_of_day[0] <= currentTime.hour && item.time_of_day[1] >= currentTime.hour && item.month.north[formMonth] === 1){
+                        console.log(item.name)
+                        return item;
+                    };
                 } else {
-                    return currentTime && item.time_of_day[1] <= currentTime.hour && item.time_of_day[0] >= currentTime.hour && item.month.north[currentTime.month] === 1
+                    if (currentTime && item.time_of_day[1] <= currentTime.hour && item.time_of_day[0] >= currentTime.hour && item.month.north[formMonth] === 1){
+                        console.log(item.name)
+                        return item;
+                    }
                 }
             }));
         };
-    }, [total, currentTime]);//Oly recreates if total or currentTime changes
+    }, [total, currentTime]);//Only recreates if total or currentTime changes
 
 
     // set loading to true on start and once data is in then set loading to false
@@ -242,32 +255,31 @@ export default function DisplayIcons() {
 
     return (
         <div>
-            {loading ? <h2>Loading...</h2> : 
+            {loading ? <h2 className="text-white">Loading...</h2> : 
                 <div onMouseLeave={() => setClickedItem(null)}>
                     <div className="flex justify-between">
                         {filterHtml()}
-                        {settingsDropDown()}
-                    </div>
-                    
-
-                    <div>
                         {currentTime ? 
                             <div>
-                                <h4 className="text-black dark:text-white">{`Current Time: ${currentTime?.hour}:${currentTime?.minute}:${currentTime?.seconds}`}</h4>
-                                <h4 className="text-black dark:text-white">{`Month: ${currentTime.month}`}</h4>
+                                <h4 className="text-white">{`Current Time: ${currentTime?.hour}:${currentTime?.minute}:${currentTime?.seconds}`}</h4>
+                                <h4 className="text-white">{`Month: ${currentTime.month}`}</h4>
                             </div> 
                             : 
                             ""
                         }
+                        {settingsDropDown()}
+                    </div>
+
+                    <div className="p-4">
                     </div>
 
                     {/* Display enlarged info box when hovering */}
                     {clickedItem && setClickedItemInformation()}
 
-                    <div className="inset-0 flex flex-wrap items-center justify-center bg-white dark:bg-black bg-opacity-50 z-50 p-3 min-h-200 rounded-lg shadow-lg" >
+                    <div className="inset-0 flex flex-wrap items-center justify-center bg-slate-950 dark:bg-black bg-opacity-50 z-50 p-3 min-h-200 rounded-lg shadow-lg" >
                     {filter.timed ? 
                         <div className="flex flex-wrap justify-baseline mt-5">
-                            <h2 className="text-black dark:text-white align-text-top">Timed Items</h2>
+                            <h2 className="text-white dark:text-white align-text-top">Timed Items</h2>
                             {
                                 timedItems.map((item: any, index: number) => {
                                     return (
@@ -293,7 +305,7 @@ export default function DisplayIcons() {
 
                     {filter.bugs ? 
                             <div className="flex flex-wrap justify-baseline mt-5">
-                                <h2 className="text-black dark:text-white align-text-top">Bugs</h2>
+                                <h2 className="text-white dark:text-white align-text-top">Bugs</h2>
                                 {
                                     bugs.map((item: any, index: number) => {
                                         return (
@@ -320,7 +332,7 @@ export default function DisplayIcons() {
 
                     {filter.fish ? 
                         <div className="flex flex-wrap justify-baseline mt-5">
-                            <h2 className="text-black dark:text-white align-text-top">Fish</h2>
+                            <h2 className="text-white dark:text-white align-text-top">Fish</h2>
                             {
                                 fish.map((item: any, index: number) => {
                                     return (
@@ -345,7 +357,7 @@ export default function DisplayIcons() {
                     
                     {filter.seaCreatures ? 
                         <div className="flex flex-wrap left-0 mt-5">
-                            <h2 className="text-black dark:text-white align-text-top">Sea Creatures</h2>
+                            <h2 className="text-white dark:text-white align-text-top">Sea Creatures</h2>
                             {
                                 seaCreatures.map((item: any, index: number) => {
                                     return (
@@ -372,7 +384,7 @@ export default function DisplayIcons() {
                         <div className="flex flex-wrap justify-baseline mt-5">
                             {uncatagorized ? <h2>Nothing in Uncategorized at this time...</h2> : 
                                 <div>
-                                    <h2 className="text-black dark:text-white align-text-top">Uncagegorized</h2>
+                                    <h2 className="text-white dark:text-white align-text-top">Uncagegorized</h2>
                                     {
                                         seaCreatures.map((item: any, index: number) => {
                                             return (
@@ -399,7 +411,7 @@ export default function DisplayIcons() {
 
                     {filter.total ? 
                         <div className="flex flex-wrap justify-baseline mt-5">
-                            <h2 className="text-black dark:text-white align-text-top">Total</h2>
+                            <h2 className="text-white dark:text-white align-text-top">Total</h2>
                             {
                                 total.map((item: any, index: number) => {
                                     return (
@@ -424,7 +436,7 @@ export default function DisplayIcons() {
 
                     {filter.selectedItems ?  
                         <div className="flex flex-wrap justify-baseline mt-5">
-                            <h2 className="text-black dark:text-white align-text-top">Selected</h2>
+                            <h2 className="text-white dark:text-white align-text-top">Selected</h2>
                             {
                                 selectedItems.map((item: any, index: number) => {
                                     return (
@@ -450,9 +462,9 @@ export default function DisplayIcons() {
                 </div>
 
                 <div>
-                    <button className=" bg-blue-100 rounded-lg p-2 shadow-lg m-2" onClick={() => saveItems()}>Save</button>
-                    <button className=" bg-blue-50 rounded-lg p-2 shadow-lg m-2" onClick={() => logSelectedItems()}>log</button>
-                    <button className=" bg-blue-50 rounded-lg p-2 shadow-lg m-2" onClick={() => remove_data()}>Clear Data</button>
+                    <button className=" bg-zinc-950 text-white rounded-lg p-2 shadow-lg m-2" onClick={() => saveItems()}>Save</button>
+                    <button className=" bg-zinc-950 text-white rounded-lg p-2 shadow-lg m-2" onClick={() => logSelectedItems()}>log</button>
+                    <button className=" bg-zinc-950 text-white rounded-lg p-2 shadow-lg m-2" onClick={() => remove_data()}>Clear Data</button>
                 </div>
 
             </div>}

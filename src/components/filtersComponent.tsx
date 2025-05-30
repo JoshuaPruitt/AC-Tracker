@@ -16,18 +16,18 @@ export const FilterComponent = () => {
 
     const filterHtml = () => {
         return (
-        <div className=" bg-white dark:bg-purple-950 rounded-lg p-4 w-1/3 shadow-lg max-w-50 static">
+        <div className=" bg-zinc-950 dark:bg-purple-950 rounded-lg p-4 w-1/3 shadow-lg max-w-50 static">
             <div className='flex justify-between' onClick={() => setIsOpen(!isOpen)}>
                 <button 
                     type="button" 
-                    className="text-gray-600 hover:text-gray-800 dark:text-white flex justify-center" 
+                    className="flex justify-between items-center bg-zinc-700 text-white dark:bg-purple-800 rounded-md px-4 py-2 cursor-pointer" 
                     id="menu-button"
                     onClick={() => setIsOpen(!isOpen)}
                 >
                     Filters
                 </button>
 
-                <IoIosArrowDown width={30} height={30} className="scale-120 translate-y-1.5"/>
+                <IoIosArrowDown width={30} height={30} className="text-gray-600 scale-120 translate-y-1.5"/>
             </div>
             
 
@@ -35,7 +35,7 @@ export const FilterComponent = () => {
                 <div className="space-y-2">
                     <div className="py-1">
                         {Object.keys(filter).map((value, index) => (
-                            <label key={index} className="flex items-center space-x-2">
+                            <label key={index} className="text-white flex items-center space-x-2">
                                 <input 
                                     type="checkbox"
                                     checked={filter[value as keyof typeof filter]}

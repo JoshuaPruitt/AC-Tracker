@@ -9,11 +9,11 @@ export const SettingsComponent = () => {
 
     const settingsDropDown = () => {
         return (
-        <div className=" bg-white dark:bg-purple-950 rounded-lg p-4 w-1/3 shadow-lg max-w-50 static">
+        <div className=" bg-zinc-950 dark:bg-purple-950 rounded-lg p-4 w-1/3 shadow-lg max-w-50 static">
             <div className='flex justify-between' onClick={() => setIsOpen(!isSettingsOpen)}>
                 <button 
                     type="button" 
-                    className="flex justify-between items-center bg-gray-200 dark:bg-purple-800 rounded-md px-4 py-2 cursor-pointer" 
+                    className="flex justify-between items-center bg-zinc-700 text-white dark:bg-purple-800 rounded-md px-4 py-2 cursor-pointer" 
                     id="menu-button"
                     onClick={() => setIsOpen(!isSettingsOpen)}
                 >
@@ -25,7 +25,7 @@ export const SettingsComponent = () => {
             
 
             {isSettingsOpen ? 
-                <div className="absolute mt-2 bg-white dark:bg-purple-950 rounded-lg p-4 shadow-lg z-50">
+                <div className="absolute mt-2 bg-zinc-950 dark:bg-purple-950 rounded-lg p-4 shadow-lg z-50">
                     <div className="space-y-2">
                         <div className="py-1">
                             <label>Icon Size: 
