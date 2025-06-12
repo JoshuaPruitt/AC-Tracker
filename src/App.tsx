@@ -1,12 +1,13 @@
 // import { ChangeTheme } from "./components/pageThemeChange";
 import DisplayIcons from "./components/displayIcons";
+// import grass_bg from "../assets/background/grass_bg.jpg";
 import './App.css'
 
 function App() {
   // const {isDark, toggleDarkMode} = ChangeTheme();
 
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)] bg-slate-900 dark:bg-purple-950">
+    <div className="bg-[url('../assets/background/grass_bg_2_rotate.png')] bg-cover grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <div className='flex justify-center text-white'>
           <h1 className='font-bold text-xl'>Animal Crossing Tracker</h1>
       </div>
