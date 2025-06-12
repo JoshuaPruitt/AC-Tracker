@@ -2,15 +2,19 @@
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 .btn:hover {
-  @apply bg-zinc-800;
+  @apply bg-emerald-800;
 }
 
 .btn2:hover {
-  @apply bg-zinc-600;
+  @apply bg-emerald-600;
+}
+
+.btn:active {
+  @apply bg-emerald-950;
 }
 
 .icon:hover {
-  @apply text-gray-700;
+  @apply text-teal-700;
 }
 
 /* #root {

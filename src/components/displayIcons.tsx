@@ -277,7 +277,7 @@ export default function DisplayIcons() {
                     {/* Display enlarged info box when hovering */}
                     {clickedItem && setClickedItemInformation()}
 
-                    <div className="inset-0 flex flex-wrap items-center justify-center bg-slate-950 dark:bg-black bg-opacity-50 z-50 p-3 min-h-200 rounded-lg shadow-lg" >
+                    <div className="inset-0 flex flex-wrap items-center justify-center bg-emerald-900 bg-opacity-50 z-50 p-3 min-h-200 rounded-lg shadow-lg" >
                     {filter.timed ? 
                         <div className="flex flex-wrap justify-baseline mt-5">
                             <h2 className="text-white dark:text-white align-text-top">Timed Items</h2>
@@ -463,9 +463,9 @@ export default function DisplayIcons() {
                 </div>
 
                 <div>
-                    <button className="btn bg-zinc-950 text-white rounded-lg p-2 shadow-lg m-2" onClick={() => saveItems()}>Save</button>
-                    <button className="btn bg-zinc-950 text-white rounded-lg p-2 shadow-lg m-2" onClick={() => logSelectedItems()}>log</button>
-                    <button className="btn bg-zinc-950 text-white rounded-lg p-2 shadow-lg m-2" onClick={() => remove_data()}>Clear Data</button>
+                    <button className="btn bg-emerald-900 text-white rounded-lg p-2 shadow-lg m-2" onClick={() => saveItems()}>Save</button>
+                    <button className="btn bg-emerald-900 text-white rounded-lg p-2 shadow-lg m-2" onClick={() => logSelectedItems()}>log</button>
+                    <button className="btn bg-emerald-900 text-white rounded-lg p-2 shadow-lg m-2" onClick={() => remove_data()}>Clear Data</button>
                 </div>
 
             </div>}
