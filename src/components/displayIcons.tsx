@@ -12,8 +12,13 @@ import { getTimeDataIp } from '../api/timeData.js';
 import Time from "../interfaces/time-interface.js";
 import LoadingDots from "./loadingDots.js";
 
+import { ConfirmModal } from "./confirmModal.js";
+
 
 export default function DisplayIcons() {
+    const [showSaveModal, setShowSaveModal] = useState(false) // used to open and close the save modal
+    const [showClearModal, setShowClearModal] = useState(false) // used to open and close the clear modal
+
     const {filter, filterHtml} = FilterComponent();
     const {settings, settingsDropDown} = SettingsComponent();
     const {clickedItem, setClickedItem, setClickedItemInformation} = ClickItem();
@@ -256,6 +261,29 @@ export default function DisplayIcons() {
 
     return (
         <div>
+            <div>
+                <div>
+                    {showSaveModal ? 
+                        <ConfirmModal 
+                            message="Do you wish to Creature Data?" 
+                            callBackFunction={() => saveItems()}
+                            CloseFunction={() => setShowSaveModal(false)}
+                        >
+                        </ConfirmModal> : null
+                    }
+                </div>
+                <div>
+                    {showClearModal ?
+                        <ConfirmModal
+                            message="Are you sure you want to clear all data?"
+                            callBackFunction={() => remove_data()}
+                            CloseFunction={() => setShowClearModal(false)}
+                        >
+                        </ConfirmModal> : null
+                    }
+                </div>
+            </div>
+
             {loading ? <h2 className="text-white">{LoadingDots()}</h2> : 
                 <div onMouseLeave={() => setClickedItem(null)}>
                     <div className="flex justify-between">
@@ -463,9 +491,9 @@ export default function DisplayIcons() {
                 </div>
 
                 <div>
-                    <button className="btn bg-emerald-900 text-white rounded-lg p-2 shadow-lg m-2" onClick={() => saveItems()}>Save</button>
+                    <button className="btn bg-emerald-900 text-white rounded-lg p-2 shadow-lg m-2" onClick={() => setShowSaveModal(true)}>Save</button>
                     <button className="btn bg-emerald-900 text-white rounded-lg p-2 shadow-lg m-2" onClick={() => logSelectedItems()}>log</button>
-                    <button className="btn bg-emerald-900 text-white rounded-lg p-2 shadow-lg m-2" onClick={() => remove_data()}>Clear Data</button>
+                    <button className="btn bg-emerald-900 text-white rounded-lg p-2 shadow-lg m-2" onClick={() => setShowClearModal(true)}>Clear Data</button>
                 </div>
 
             </div>}
