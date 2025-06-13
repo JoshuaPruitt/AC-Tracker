@@ -289,12 +289,11 @@ export default function DisplayIcons() {
                     <div className="flex justify-between">
                         {filterHtml()}
                         {currentTime ? 
-                            <div>
+                            <div className="bg-emerald-800 rounded-lg p-1.5">
                                 <h4 className="text-white">{`Current Time: ${currentTime?.hour}:${currentTime?.minute}:${currentTime?.seconds}`}</h4>
                                 <h4 className="text-white">{`Current Month: ${currentTime.month}`}</h4>
                             </div> 
-                            : 
-                            ""
+                            : null
                         }
                         {settingsDropDown()}
                     </div>
