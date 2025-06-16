@@ -104,6 +104,17 @@ export default function DisplayIcons() {
             )
         );
     };
+
+    const removeSelectedItems = () => {
+        const data = get_data();
+        if (!data) return;
+
+        setTotal((prevTotal: any) => {
+            return prevTotal.filter(
+                (item: any) => !data.some((selected: any) => selected.name === item.name)
+            );
+        });
+    }
     
     // Honestly really confused why this was written. 
     const uniqueTimedItems: Acnh_data_interface[]= useMemo(() => {
@@ -234,6 +245,7 @@ export default function DisplayIcons() {
         // console.log("total:", total)
         // console.log("selected Items:", selectedItems)
 
+        removeSelectedItems() // remove all items from total that are already selected
         setItems() // set the items
         
     }, [total, selectedItems, setItems]);
