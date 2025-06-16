@@ -25,10 +25,14 @@ export const SettingsComponent = () => {
             
 
             {isSettingsOpen ? 
-                <div className="absolute mt-2 bg-emerald-950 rounded-lg p-4 shadow-lg z-50">
-                    <div className="space-y-2">
-                        <div className="py-1 text-white">
-                            <label>Icon Size: 
+                <div className="fixed inset-0 bg-gray-800/50 flex items-center justify-center z-20 flex-col">
+                    <div className="bg-white rounded-lg p-6 shadow-lg w-full max-w-lg">
+                        <div className="flex justify-center">
+                            <h2>Settings</h2>
+                        </div>
+
+                        <div className="py-1 text-black">
+                            <label>Icon Size :  
                                 <input value={settings.iconSize || ''} onChange={(e) => {
                                     const {value} = e.target
                                     setSetting((prev) => ({
@@ -37,6 +41,10 @@ export const SettingsComponent = () => {
                                     }))
                                 }}></input>
                             </label>
+                        </div>
+
+                        <div className="m-1 flex justify-center">
+                            <button className='btn text-white bg-emerald-900 p-1.5 rounded-lg' onClick={() => setIsOpen(false)}>Close</button>
                         </div>
                     </div>
                 </div> : ''

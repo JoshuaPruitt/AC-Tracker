@@ -32,10 +32,14 @@ export const FilterComponent = () => {
             
 
             {isOpen ? 
-                <div className="space-y-2">
-                    <div className="py-1">
+                <div className="fixed inset-0 bg-gray-800/50 flex items-center justify-center z-20 flex-col">
+                    <div className=" bg-white rounded-lg p-6 shadow-lg w-full max-w-2xl">
+                        <div className="flex justify-center">
+                            <h2>Filters</h2>
+                        </div>
+
                         {Object.keys(filter).map((value, index) => (
-                            <label key={index} className="text-white flex items-center space-x-2">
+                            <label key={index} className="text-black flex items-center space-x-2">
                                 <input 
                                     type="checkbox"
                                     checked={filter[value as keyof typeof filter]}
@@ -49,6 +53,10 @@ export const FilterComponent = () => {
                                 {/* {key.charAt(0).toUpperCase() + key.slice(1)} */}
                             </label>
                         ))}
+
+                        <div className="m-1 flex justify-center">
+                            <button className='btn text-white bg-emerald-900 p-1.5 rounded-lg' onClick={() => setIsOpen(false)}>Close</button>
+                        </div>
                     </div>
                 </div> : ''
             }
