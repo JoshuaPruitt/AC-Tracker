@@ -504,7 +504,6 @@ export default function DisplayIcons() {
                 <div>
                     <button className="btn bg-emerald-900 text-white rounded-lg p-2 shadow-lg m-2" onClick={() => setShowSaveModal(true)}>Save</button>
                     <button className="btn bg-emerald-900 text-white rounded-lg p-2 shadow-lg m-2" onClick={() => logSelectedItems()}>log</button>
-                    <button className="btn bg-emerald-900 text-white rounded-lg p-2 shadow-lg m-2" onClick={() => console.log(mouseCoord)}>Log Mouse coord</button>
                     <button className="btn bg-emerald-900 text-white rounded-lg p-2 shadow-lg m-2" onClick={() => setShowClearModal(true)}>Clear Data</button>
                 </div>
 
