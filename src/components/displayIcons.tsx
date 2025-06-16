@@ -320,6 +320,7 @@ export default function DisplayIcons() {
                                             key={index} 
                                             onClick={() => clickOnItem(item)}
                                             className="transition-transform duration-200 ease-in-out hover:scale-125"
+                                            onMouseLeave={() => setClickedItem(null)}
                                             >
                                             <img
                                                 src={item.icon}
@@ -346,6 +347,7 @@ export default function DisplayIcons() {
                                                 key={index} 
                                                 onClick={() => clickOnItem(item)}
                                                 className="transition-transform duration-200 ease-in-out hover:scale-125"
+                                                onMouseLeave={() => setClickedItem(null)}
                                                 >
                                                 <img
                                                     src={item.icon}
@@ -373,6 +375,7 @@ export default function DisplayIcons() {
                                                 key={index} 
                                                 onClick={() => clickOnItem(item)}
                                                 className="transition-transform duration-200 ease-in-out hover:scale-125"
+                                                onMouseLeave={() => setClickedItem(null)}
                                             >
                                             <img
                                                 src={item.icon}
@@ -398,6 +401,7 @@ export default function DisplayIcons() {
                                                 key={index} 
                                                 onClick={() => clickOnItem(item)}
                                                 className="transition-transform duration-200 ease-in-out hover:scale-125"
+                                                onMouseLeave={() => setClickedItem(null)}
                                             >
                                             <img
                                                 src={item.icon}
@@ -425,6 +429,7 @@ export default function DisplayIcons() {
                                                     key={index} 
                                                     onClick={() => clickOnItem(item)}
                                                     className="transition-transform duration-200 ease-in-out hover:scale-125"
+                                                    onMouseLeave={() => setClickedItem(null)}
                                                 >
                                                     <img
                                                         src={item.icon}
@@ -452,6 +457,7 @@ export default function DisplayIcons() {
                                                 key={index} 
                                                 onClick={() => clickOnItem(item)}
                                                 className="transition-transform duration-200 ease-in-out hover:scale-125"
+                                                onMouseLeave={() => setClickedItem(null)}
                                             >
                                             <img
                                                 src={item.icon}
@@ -477,6 +483,7 @@ export default function DisplayIcons() {
                                             key={index} 
                                             onClick={() => selectAlreadySelected(item)}
                                             className="transition-transform duration-200 ease-in-out hover:scale-125"
+                                            onMouseLeave={() => setClickedItem(null)}
                                             >
                                             <img
                                                 src={item.icon}

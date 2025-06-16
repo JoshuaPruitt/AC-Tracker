@@ -32,7 +32,7 @@ export const SettingsComponent = () => {
                         </div>
 
                         <div className="py-1 text-black">
-                            <label>Icon Size :  
+                            <label>Icon Size: 
                                 <input value={settings.iconSize || ''} onChange={(e) => {
                                     const {value} = e.target
                                     setSetting((prev) => ({
