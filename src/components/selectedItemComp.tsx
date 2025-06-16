@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Acnh_data_interface } from "../interfaces/acnh-data-interface";
+import { mouseCoord, getWindowSize } from "../App";
 
 export const ClickItem = () => {
     const [clickedItem, setClickedItem] = useState<Acnh_data_interface | null>(null);
@@ -11,7 +12,15 @@ export const ClickItem = () => {
 
     // Function formats all selected Items data to be easier to read and understand. Adds month names, standard time, and weather information
     const setClickedItemInformation = () => {
-        const containerClass = 'fixed flex flex-wrap flex-col bottom-10 left-1/2 transform -translate-x-1/2 bg- p-4 bg-gray-700 shadow-lg rounded-lg z-50 w-[90vw] max-w-2xl text-white border-3 border-gray-800';
+        let lowOrHigh: string;
+
+        if ((getWindowSize().height / 2) > mouseCoord.mouseY){
+            lowOrHigh = 'bottom-10'
+        } else {
+            lowOrHigh = 'top-10'
+        }
+
+        const containerClass = `fixed flex flex-wrap flex-col ${lowOrHigh} left-1/2 transform -translate-x-1/2 bg- p-4 bg-gray-700 shadow-lg rounded-lg z-50 w-[90vw] max-w-2xl text-white border-3 border-gray-800`;
         const fontClass = "text-[clamp(1rem,2vw,2rem)] font-semibold";
         const subFontClass = "text-blue-400";
 

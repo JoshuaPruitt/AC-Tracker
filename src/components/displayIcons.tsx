@@ -13,6 +13,7 @@ import Time from "../interfaces/time-interface.js";
 import LoadingDots from "./loadingDots.js";
 
 import { ConfirmModal } from "./confirmModal.js";
+import { mouseCoord } from "../App.js";
 
 
 export default function DisplayIcons() {
@@ -42,6 +43,8 @@ export default function DisplayIcons() {
 
     const [currentTime, setCurrentTime] = useState<Time| null | void>(); // Current time
 
+    let data: any; // will be used if data needs to be looked over in functions
+
     const stopLoading = () => {
         setLoading(false);
     }
@@ -51,37 +54,24 @@ export default function DisplayIcons() {
     }
 
     const pullStorage = () => {
-        const data = get_data();
+        data = get_data();
         if (!data) return;
 
-        // Remove duplicates from incoming data before adding to selectedItems
-        setSelectedItems((prevItems) => {
-            const uniqueItems = [...prevItems, ...data].filter(
-                (item, index, self) =>
-                    index === self.findIndex((i) => i.name === item.name) // Ensure uniqueness
-            );
-            return uniqueItems;
-        });
-        
-        // Add new unique items to total
-        setTotal((prevTotal: any) => {
-            const newItems = data.filter(
-                (item: any) => !prevTotal.some((i: any) => i.name === item.name)
-            );
-    
-            return [...prevTotal, ...newItems].filter(
-                (item, index, self) =>
-                    index === self.findIndex((i) => i.name === item.name) // Ensure uniqueness
-            );
-        });
-    
-        // Store indexes of selected items inside total
-        setTotal((prevTotal: any) => {
-            return prevTotal.filter(
-                (item: any) => !data.some((selected: any) => selected.name === item.name)
-            );
-        });
+        // Deduplicate first
+        const uniqueSelected = data.filter((item: any, index: number, self: any) =>
+            index === self.findIndex((i: any) => i.name === item.name)
+        );
+
+        setSelectedItems(uniqueSelected);
+
+        // Filter total to omit already selected
+        // setTotal((prevTotal) =>
+        //     prevTotal.filter((item) =>
+        //         !uniqueSelected.some((selected: any) => selected.name === item.name)
+        //     )
+        // );
     };
+
 
     const saveItems = () => {
         save_data(selectedItems)
@@ -104,17 +94,6 @@ export default function DisplayIcons() {
             )
         );
     };
-
-    const removeSelectedItems = () => {
-        const data = get_data();
-        if (!data) return;
-
-        setTotal((prevTotal: any) => {
-            return prevTotal.filter(
-                (item: any) => !data.some((selected: any) => selected.name === item.name)
-            );
-        });
-    }
     
     // Honestly really confused why this was written. 
     const uniqueTimedItems: Acnh_data_interface[]= useMemo(() => {
@@ -209,12 +188,12 @@ export default function DisplayIcons() {
                 //if statement prevents items with a starting time of a higher number than the ending time from not being added to current bugs
                 if (item.time_of_day[0] < item.time_of_day[1]){
                     if (currentTime && item.time_of_day[0] <= currentTime.hour && item.time_of_day[1] >= currentTime.hour && item.month.north[formMonth] === 1){
-                        console.log(item.name)
+                        // console.log(item.name)
                         return item;
                     };
                 } else {
                     if (currentTime && item.time_of_day[1] <= currentTime.hour && item.time_of_day[0] >= currentTime.hour && item.month.north[formMonth] === 1){
-                        console.log(item.name)
+                        // console.log(item.name)
                         return item;
                     }
                 }
@@ -235,20 +214,12 @@ export default function DisplayIcons() {
             }
 
             dataFunc()
+            console.log("Get total data")
             
         } catch (err: any) {
             console.error("Error displaying elements!", err)
         }
     }, [addData]);
-
-    useEffect(() => {
-        // console.log("total:", total)
-        // console.log("selected Items:", selectedItems)
-
-        removeSelectedItems() // remove all items from total that are already selected
-        setItems() // set the items
-        
-    }, [total, selectedItems, setItems]);
 
     // remove total duplicates once the component has finished loading
     useEffect(() => {
@@ -259,12 +230,34 @@ export default function DisplayIcons() {
         }
         pullStorage()
         removeTotalDup()
-    
+        
+        console.log("Pull storage and remove total duplicates")
     }, []);
+
+    // remove selected items from total
+    useEffect(() => {
+        setTotal((prevTotal) =>
+            prevTotal.filter((item) =>
+                !selectedItems.some((selected) => selected.name === item.name)
+            )
+        );
+
+        console.log("Remove Selected items from total")
+    }, [selectedItems]);
+
+    useEffect(() => {
+        // console.log("total:", total)
+        // console.log("selected Items:", selectedItems)
+
+        setItems() // set the items
+        console.log("Add items from total.")
+        
+    }, [total, selectedItems, setItems]);
 
     // Ensures timedItems contains no duplicate entries
     useEffect(() => {
         setTimedItems(uniqueTimedItems)
+        console.log("Set timed items.")
     }, [uniqueTimedItems]);
 
     // useEffect(() => {
@@ -504,6 +497,7 @@ export default function DisplayIcons() {
                 <div>
                     <button className="btn bg-emerald-900 text-white rounded-lg p-2 shadow-lg m-2" onClick={() => setShowSaveModal(true)}>Save</button>
                     <button className="btn bg-emerald-900 text-white rounded-lg p-2 shadow-lg m-2" onClick={() => logSelectedItems()}>log</button>
+                    <button className="btn bg-emerald-900 text-white rounded-lg p-2 shadow-lg m-2" onClick={() => console.log(mouseCoord)}>Log Mouse coord</button>
                     <button className="btn bg-emerald-900 text-white rounded-lg p-2 shadow-lg m-2" onClick={() => setShowClearModal(true)}>Clear Data</button>
                 </div>
 

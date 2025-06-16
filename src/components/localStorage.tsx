@@ -14,7 +14,7 @@ export const is_local_storage = () : boolean => {
 export const get_data = () => {
     const storage: string | null = localStorage.getItem("ac_data")
     if (storage){
-        console.log(storage)
+        // console.log(storage)
         return JSON.parse(storage)
     } 
 }
@@ -44,7 +44,7 @@ export const save_theme = (data: string | null) => {
 export const get_theme = () => {
     const data: string | null = localStorage.getItem('theme')
     if(data){
-        console.log(data)
+        // console.log(data)
         return JSON.parse(data)
     }
 }
